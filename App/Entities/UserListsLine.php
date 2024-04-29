@@ -18,4 +18,25 @@ class UserListsLine
     $this->rating = $rating;
     $this->listTypeId = $listTypeId;
   }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function getUserId()
+  {
+    return $this->userId;
+  }
+  public function getFilmId()
+  {
+    return $this->filmId;
+  }
+  public function getListTypeId()
+  {
+    return $this->listTypeId;
+  }
+  public function getRating()
+  {
+    return $this->rating;
+  }
 }
