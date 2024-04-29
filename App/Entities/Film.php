@@ -10,12 +10,12 @@ class Film
 {
   private int $id;
   private string $title;
-  private string $description;
-  private int $runtime;
-  private DateTime $releaseDate;
-  private string $coverImage;
-  private int $genreId;
-  private int $categoryId;
+  private string|null $description;
+  private int|null $runtime;
+  private DateTime|null $releaseDate;
+  private string|null $coverImage;
+  private int|null $genreId;
+  private int|null $categoryId;
   private int $ratingId;
 
   public function __construct(int $id, string $title, int $ratingId, string $description = null, int $runtime = null, DateTime $releaseDate = null, string $coverImage = '~/img/placeholder.jpg', int $genreId = null, int $categoryId = null)
