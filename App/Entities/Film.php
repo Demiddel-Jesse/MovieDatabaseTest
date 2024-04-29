@@ -30,4 +30,42 @@ class Film
     $this->categoryId = $categoryId;
     $this->ratingId = $ratingId;
   }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+
+  public function getTitle()
+  {
+    return $this->title;
+  }
+  public function getDescription()
+  {
+    return $this->description;
+  }
+  public function getRuntime()
+  {
+    return $this->runtime;
+  }
+  public function getReleaseDate()
+  {
+    return $this->releaseDate;
+  }
+  public function getCoverImage()
+  {
+    return $this->coverImage;
+  }
+  public function getGenreId()
+  {
+    return $this->genreId;
+  }
+  public function getCategoryId()
+  {
+    return $this->categoryId;
+  }
+  public function getRatingId()
+  {
+    return $this->ratingId;
+  }
 }
