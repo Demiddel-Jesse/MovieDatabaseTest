@@ -56,7 +56,7 @@ class CategoryDAOTest extends TestCase
     $this->assertEquals('LongFilm', $this->categoryDAO->getById(1)->getName());
     $this->categoryDAO->updateCategory(1, 'LongerFilm');
     $this->assertEquals('LongerFilm', $this->categoryDAO->getById(1)->getName());
-    $this->assertEquals('Short', $this->categoryDAO->getById(1)->getName());
+    $this->assertEquals('Short', $this->categoryDAO->getById(2)->getName());
     $this->categoryDAO->updateCategory('Short', 'ShorterFilm');
     $this->assertEquals('ShorterFilm', $this->categoryDAO->getById(2)->getName());
   }
