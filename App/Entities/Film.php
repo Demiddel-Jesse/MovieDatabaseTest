@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace App\Entities;
+
+use DateTime;
+
 class Film
 {
   private int $id;
