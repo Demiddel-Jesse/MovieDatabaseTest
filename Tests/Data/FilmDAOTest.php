@@ -37,12 +37,20 @@ class FilmDAOTest extends TestCase
       $this->filmObject,
       $this->filmDAO->getById(1)
     );
+    $this->assertEquals(
+      null,
+      $this->filmDAO->getById(5)
+    );
   }
   public function test_getByTitle()
   {
     $this->assertEquals(
       $this->filmObject,
       $this->filmDAO->getByTitle('The Death of Stalin')
+    );
+    $this->assertEquals(
+      null,
+      $this->filmDAO->getByTitle('AAAAAA')
     );
   }
 
