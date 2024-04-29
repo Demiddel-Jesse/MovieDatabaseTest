@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <phpunit bootstrap="vendor/autoload.php"
+  colors="true"
+  verbose="true"
+  stopOnFailure="false"
+  testdox="true">
+  <testsuites>
+    <testsuite name="FilmBibliotheek-Entities">
+      <directory>Tests/Entities</directory>
+    </testsuite>
+    <testsuite name="FilmBibliotheek-Data">
+      <directory>Tests/Data</directory>
+    </testsuite>
+    <testsuite name="FilmBibliotheek-Business">
+      <directory>Tests/Business</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
