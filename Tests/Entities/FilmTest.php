@@ -17,4 +17,47 @@ class FilmTest extends TestCase
     $this->filmObject = new Film($this->data['id'], $this->data['title'], $this->data['ratingId'], $this->data['description'], $this->data['runtime'], $this->data['releaseDate'], $this->data['coverImage'], $this->data['genreId'], $this->data['categoryId']);
     $this->emptyObject = new Film(1, 'nice', 4);
   }
+
+  public function test_getId()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getId());
+  }
+  public function test_getTitle()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getTitle());
+  }
+  public function test_getDescription()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getDescription());
+    $this->assertEquals(null, $this->emptyObject->getDescription());
+  }
+  public function test_getRuntime()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getRuntime());
+    $this->assertEquals(null, $this->emptyObject->getRuntime());
+  }
+  public function test_getReleaseDate()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getReleaseDate());
+    $this->assertEquals(null, $this->emptyObject->getReleaseDate());
+  }
+  public function test_getCoverImage()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getCoverImage());
+    $this->assertEquals('~/img/placeholder.jpg', $this->emptyObject->getCoverImage());
+  }
+  public function test_getGenreId()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getGenreId());
+    $this->assertEquals(null, $this->emptyObject->getGenreId());
+  }
+  public function test_getCategoryId()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getCategoryId());
+    $this->assertEquals(null, $this->emptyObject->getCategoryId());
+  }
+  public function test_getRatingId()
+  {
+    $this->assertEquals($this->data['id'], $this->filmObject->getRatingId());
+  }
 }
