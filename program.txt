@@ -1,0 +1,236 @@
+Entities
+  Categories
+    getId
+    getName
+
+  Films
+    getId 
+    getTitle
+    getDescription
+    getRuntime
+    getReleaseDate
+    getCoverImagePath
+    getGenreId
+    getCategoryId
+    getRatingId
+
+  Genres
+    getId
+    getName
+
+  ListTypes
+    getId
+    getName
+
+  Ratings
+    getId
+    getName
+    getDescription
+
+  UserListsLines
+    getId
+    getUserId
+    getFilmId
+    getRating
+    getListTypesId
+
+  Users
+    getId
+    getUsername
+    getEmail
+    getPassword
+    getAdmin
+
+  Actors
+    getId
+    getFirstName
+    getLastName
+    getImage
+
+  Directors
+    getId
+    getFirstName
+    getLastName
+    getImage
+
+  ActorsFilmsLines
+    getId
+    getActorId
+    getFilmId
+
+  DirectorsFilmsLines
+    getId
+    getDirectorId
+    getFilmId
+
+DOA
+  CategoryDAO
+    getById
+    getByName
+    getAll
+    createNewCategory
+    updateCategory
+    removeCategory
+
+  FilmDAO
+    getById
+    getByTitle
+    getAllFilms
+    createFilm (title has to be unique)
+    updateFilm
+    removeFilm
+
+  GenreDAO
+    getById
+    getByName
+    getAll
+    createNewGenre
+    updateGenre
+    removeGenre
+
+  ListTypeDAO
+    getById
+    getByName
+    getAll
+
+  RatingDAO
+    getById
+    getByName
+    getAll
+    createRating
+    updateRating
+    removeRating
+
+  UserListsLineDAO
+    getById
+    getAll
+    getAllForUserId
+    getAllForFilmId
+    createNewUserListLine
+    updateRating
+    updateListType
+    removeLine
+
+  UserDAO
+    getById
+    getByEmail
+    getByUsername
+    createNewUser
+    updateUser
+    removeUser
+
+  ActorDAO
+    getById
+    getByFirstName
+    getByLastName
+    getAll
+    createNewActor
+    updateActor
+    removeActor
+
+  DirectorDAO
+    getById
+    getByFirstName
+    getByLastName
+    getAll
+    createNewDirector
+    updateDirector
+    removeDirector
+
+  ActorsFilmsLinesDAO
+    getById
+    getAllForActorId
+    getAllForFilmId
+    createNewActorFilmLine
+    removeActorFilmLine
+
+  DirectorsFilmsLinesDAO
+    getById
+    getAllForDirectorId
+    getAllForFilmId
+    createNewDirectorFilmLine
+    removeDirectorFilmLine
+
+Services
+  CategoryService
+    getCategory (check if by id or by name)
+    getAllCategories
+    createNewCategory
+    updateCategory
+    removeCategory
+
+  FilmService
+    getFilm (check if id or title)
+    getAllFilms
+    getAverageRating (calls to UserListLineService)
+    createFilm
+    updateFilm
+    removeFilm
+
+  GenreService
+    getGenre (check if by id or by name)
+    getAllGenres
+    createNewGenre
+    updateGenre
+    removeGenre
+
+  ListTypeService
+    getListType (check if by id or by name)
+    getAllListTypes
+
+  RatingService
+    getRating (check if by id or by name)
+    getAll
+    createRating
+    updateRating
+    removeRating
+
+  UserListLineService
+    getUserListLine
+    getAllListLines
+    getListLinesForUser
+    getListLinesForFilm
+    calcAverageRatingForFilm
+    calcAverageRatingForUser
+    createNewLine
+    updateRating
+    updateList
+    removeLine
+    
+  UserService
+    getUser {
+      check if by id or string
+      if by string check if email or username returns anything }
+    register
+    login
+    delete
+
+  ActorService
+    getActor {
+      check if by id or string
+      if by string check if firstName or lastName returns anything }
+    getAllActors
+    createActor
+    updateActor
+    removeActor
+
+  DirectorService
+    getDirector {
+      check if by id or string
+      if by string check if firstName or lastName returns anything }
+    getAllDirectors
+    createDirector
+    updateDirector
+    removeDirector
+
+  ActorFilmLineService
+    getAllForActor
+    getAllForFilm
+    createNewLine
+    removeLine
+
+  DirectorFilmLineService
+    getAllForDirector
+    getAllForFilm
+    createNewLine
+    removeLine
