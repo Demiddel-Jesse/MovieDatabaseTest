@@ -32,11 +32,12 @@ class CategoryDAOTest extends TestCase
   public function test_getById()
   {
     $this->assertEquals($this->categoryObject, $this->categoryDAO->getById($this->data['id']));
+    $this->assertEquals(null, $this->categoryDAO->getById(8));
   }
 
   public function test_getByName()
   {
-    $this->assertEquals($this->categoryObject, $this->categoryDAO->getByName($this->data['name']));
+    $this->assertEquals($this->categoryObject, $this->categoryDAO->getByName($this->data['name']));$this->assertEquals(null, $this->categoryDAO->getByName('joske'));
   }
 
   public function test_getAll()
