@@ -19,7 +19,7 @@ class CategoryDAOTest extends TestCase
     $this->categoryObject = new Category($this->data['id'], $this->data['name']);
     $this->categoryDAO = new CategoryDAO();
 
-    $this->allObjects = [new Category(1, 'LongFilm'), new Category(2, 'Short'), new Category(3, 'BlockBuster'), new Category(4, 'Documentary')];
+    $this->allObjects = [new Category(3, 'BlockBuster'), new Category(4, 'Documentary'),new Category(1, 'LongFilm'), new Category(2, 'Short'), ];
 
     $this->categoryDAO->startTransaction();
   }
