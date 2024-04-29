@@ -18,7 +18,7 @@ class Film
   private int $categoryId;
   private int $ratingId;
 
-  public function __construct(int $id, string $title, string $description = null, int $runtime = null, DateTime $releaseDate = null, string $coverImage = '~/img/placeholder.jpg', int $genreId = null, int $categoryId = null, int $ratingId)
+  public function __construct(int $id, string $title, int $ratingId, string $description = null, int $runtime = null, DateTime $releaseDate = null, string $coverImage = '~/img/placeholder.jpg', int $genreId = null, int $categoryId = null)
   {
     $this->id = $id;
     $this->title = $title;
