@@ -6,8 +6,8 @@ namespace App\Data;
 
 use App\Entities\Film;
 use App\Data\DBConfig;
-use App\Exception\DoesntExistException;
-use App\Exception\InvalidTypeException;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\InvalidTypeException;
 use DateTime;
 use PDO;
 

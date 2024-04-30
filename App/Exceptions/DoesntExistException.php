@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Exception;
+namespace App\Exceptions;
+
 use Exception;
 
-class DoesntExistException extends Exception{
+class DoesntExistException extends Exception
+{
 }

@@ -6,7 +6,7 @@ namespace App\Data;
 
 use App\Entities\Rating;
 use App\Data\DBConfig;
-use App\Exception\InvalidTypeException;
+use App\Exceptions\InvalidTypeException;
 use PDO;
 
 class RatingDAO

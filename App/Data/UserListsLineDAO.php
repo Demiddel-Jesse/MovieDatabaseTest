@@ -6,7 +6,6 @@ namespace App\Data;
 
 use App\Entities\UserListsLine;
 use App\Data\DBConfig;
-use App\Exception\InvalidTypeException;
 use PDO;
 
 class UserListsLineDAO
