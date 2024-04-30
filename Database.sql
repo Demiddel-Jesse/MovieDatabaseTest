@@ -64,7 +64,7 @@ CREATE UNIQUE INDEX `name_UNIQUE` ON `FilmBibliotheek`.`Categories` (`name` ASC)
 DROP TABLE IF EXISTS `FilmBibliotheek`.`Ratings` ;
 
 CREATE TABLE IF NOT EXISTS `FilmBibliotheek`.`Ratings` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
