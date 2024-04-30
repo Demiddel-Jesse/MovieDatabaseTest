@@ -51,7 +51,8 @@ class CategoryDAO
     return null;
   }
 
-  public function getByName(string $name): ?Category{
+  public function getByName(string $name): ?Category
+  {
     $sql = 'SELECT * FROM `Categories` WHERE `name` = :name';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':name', $name);
@@ -65,7 +66,8 @@ class CategoryDAO
     return null;
   }
 
-  public function getAll():array{
+  public function getAll(): array
+  {
     $sql = 'SELECT * FROM `Categories`';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
@@ -80,9 +82,21 @@ class CategoryDAO
     return $categories;
   }
 
-  public function updateCategory(string|int $lookup, string $name):void{
-    if(is_int($lookup)){
-      if($this->getById($lookup) != null){
+  public function createNewCategory(string $name): void
+  {
+    if ($this->getByName($name) != null) {
+      throw new AlreadyExistException;
+    } else {
+      $sql = 'INSERT INTO `Categories`(`name`) VALUES (:name)';
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindValue(':name', $name);
+      $stmt->execute();
+    }
+  }
+  public function updateCategory(string|int $lookup, string $name): void
+  {
+    if (is_int($lookup)) {
+      if ($this->getById($lookup) != null) {
         $sql = 'UPDATE `Categories` SET `name` = :name WHERE `id` = :id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $lookup);
@@ -90,8 +104,8 @@ class CategoryDAO
       } else {
         throw new DoesntExistException;
       }
-    } else if(is_string($lookup)){
-      if($this->getByName($lookup) != null){
+    } else if (is_string($lookup)) {
+      if ($this->getByName($lookup) != null) {
         $sql = 'UPDATE `Categories` SET `name` = :name WHERE `name` = :lookupName';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':lookupName', $lookup);
@@ -106,17 +120,18 @@ class CategoryDAO
     $stmt->execute();
   }
 
-  public function removeCategory(string|int $lookup):void{
-    if(is_int($lookup)){
-      if($this->getById($lookup) != null){
+  public function removeCategory(string|int $lookup): void
+  {
+    if (is_int($lookup)) {
+      if ($this->getById($lookup) != null) {
         $sql = 'DELETE FROM `Categories` WHERE `id` = :id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $lookup);
       } else {
         throw new DoesntExistException;
       }
-    } else if(is_string($lookup)){
-      if($this->getByName($lookup) != null){
+    } else if (is_string($lookup)) {
+      if ($this->getByName($lookup) != null) {
         $sql = 'DELETE FROM `Categories` WHERE `name` = :lookupName;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':lookupName', $lookup);
