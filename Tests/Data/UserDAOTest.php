@@ -15,10 +15,10 @@ class UserDAOTest extends TestCase
 
   public function setUp(): void
   {
-    $this->userObject = new User(1, 'joskeVer', 'joske123', 'joske@mail.com', true);
+    $this->userObject = new User(1, 'joskeVer', '$2y$10$PTJkjOm.zJ/halEqyX9t63PyFnaAUP57yO7yXgHk/mkZrCjonOLa', 'joske@mail.com', true);
     $this->userDAO = new UserDAO();
 
-    $this->allObjects = [new User(1, 'joskeVer', 'joske123', 'joske@mail.com', true), new User(1, 'jeffreyVer', 'jeffrey123', 'jeffrey@mail.com', false)];
+    $this->allObjects = [new User(1, 'joskeVer', 'joske123', 'joske@mail.com', true), new User(1, 'jeffreyVer', '$2y$10$mQygmtwhoI1NpgPUGFcN0uaWj253EAauvSTP47xg6o8yFV3zV6vHy', 'jeffrey@mail.com', false)];
 
     $this->userDAO->startTransaction();
   }

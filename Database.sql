@@ -251,8 +251,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `FilmBibliotheek`;
-INSERT INTO `FilmBibliotheek`.`Users` (`id`, `username`, `password`, `email`, `admin`) VALUES (1, 'joskeVer', 'joske123', 'joske@mail.com', 1);
-INSERT INTO `FilmBibliotheek`.`Users` (`id`, `username`, `password`, `email`, `admin`) VALUES (2, 'jeffreyVer', 'jeffrey123', 'jeffrey@mail.com', 0);
+INSERT INTO `FilmBibliotheek`.`Users` (`id`, `username`, `password`, `email`, `admin`) VALUES (1, 'joskeVer', '$2y$10$PTJkjOm.zJ/halEqyX9t63PyFnaAUP57yO7yXgHk/mkZrCjonOLa', 'joske@mail.com', 1); -- ps: joske123
+INSERT INTO `FilmBibliotheek`.`Users` (`id`, `username`, `password`, `email`, `admin`) VALUES (2, 'jeffreyVer', '$2y$10$mQygmtwhoI1NpgPUGFcN0uaWj253EAauvSTP47xg6o8yFV3zV6vHy', 'jeffrey@mail.com', 0); -- ps: jeffrey123
 
 COMMIT;
 
