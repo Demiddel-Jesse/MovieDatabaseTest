@@ -43,7 +43,7 @@ class GenreDAOTest extends TestCase
   public function test_createNewGenre()
   {
     $this->genreDAO->createNewGenre('Historical');
-    $this->assertEquals('Historical', $this->genreDAO->getByName('Historical'));
+    $this->assertEquals('Historical', $this->genreDAO->getByName('Historical')->getName());
   }
   public function test_updateGenre()
   {
