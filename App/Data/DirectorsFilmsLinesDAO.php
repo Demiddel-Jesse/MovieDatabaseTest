@@ -1,0 +1,101 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Data;
+
+use App\Entities\DirectorsFilmsLine;
+use App\Entities\DirectorsFilmsLines;
+use App\Data\DBConfig;
+use PDO;
+
+class DirectorsFilmsLinesDAO
+{
+  private PDO $pdo;
+
+  public function __construct()
+  {
+    $this->pdo = new PDO(
+      DBConfig::$DB_CONNSTRING,
+      DBConfig::$DB_USERNAME,
+      DBConfig::$DB_PASSWORD
+    );
+  }
+
+  public function startTransaction()
+  {
+    $this->pdo->beginTransaction();
+  }
+  public function rollbackTransaction()
+  {
+    $this->pdo->rollBack();
+  }
+  public function commitTransaction()
+  {
+    $this->pdo->commit();
+  }
+
+  public function getById(int $id): ?DirectorsFilmsLine
+  {
+    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `id` = :id';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() > 0) {
+      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      return $line;
+    }
+    return null;
+  }
+
+  public function getAllForDirectorId(int $directorId): array
+  {
+    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `DirectorId` = :directorId';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':directorId', $directorId);
+    $stmt->execute();
+    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $lines = array();
+    foreach ($datas as $data) {
+      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      array_push($lines, $line);
+    }
+    return $lines;
+  }
+
+  public function getAllForFilmId(int $filmId): array
+  {
+    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `FilmId` = :filmId';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':filmId', $filmId);
+
+    $stmt->execute();
+    $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $lines = array();
+    foreach ($datas as $data) {
+      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      array_push($lines, $line);
+    }
+    return $lines;
+  }
+
+  public function createNewDirectorFilmLine(int $directorId, int $filmId)
+  {
+    $sql = 'INSERT INTO `DirectorsFilmsLines` (`DirectorId`,`FilmId`) VALUES (:directorId, :filmId)';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':filmId', $filmId);
+    $stmt->bindValue(':directorId', $directorId);
+    $stmt->execute();
+  }
+
+  public function removeDirectorFilmLine(int $id)
+  {
+    $sql = 'DELETE FROM `DirectorsFilmsLines` WHERE `id` = :id';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+  }
+}

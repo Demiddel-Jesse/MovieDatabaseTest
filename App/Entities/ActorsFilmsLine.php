@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
-class DirectorsFilmsLines
+class ActorsFilmsLine
 {
   private int $id;
-  private int $directorId;
+  private int $actorId;
   private int $filmId;
 
-  public function __construct(int $id, int $directorId, int $filmId)
+  public function __construct(int $id, int $actorId, int $filmId)
   {
     $this->id = $id;
-    $this->directorId = $directorId;
+    $this->actorId = $actorId;
     $this->filmId = $filmId;
   }
 
@@ -21,9 +21,9 @@ class DirectorsFilmsLines
   {
     return $this->id;
   }
-  public function getDirectorId()
+  public function getActorId()
   {
-    return $this->directorId;
+    return $this->actorId;
   }
   public function getFilmId()
   {
