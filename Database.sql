@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `FilmBibliotheek`.`Films` (
   `coverImage` VARCHAR(255) NULL,
   `genreId` INT NULL,
   `categoryId` INT NULL,
-  `ratingId` INT NOT NULL,
+  `ratingId` INT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_Films_Genres`
     FOREIGN KEY (`genreId`)
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `FilmBibliotheek`.`Films` (
   CONSTRAINT `fk_Films_Ratings1`
     FOREIGN KEY (`ratingId`)
     REFERENCES `FilmBibliotheek`.`Ratings` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
