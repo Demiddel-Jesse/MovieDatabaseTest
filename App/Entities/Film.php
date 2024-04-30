@@ -16,9 +16,9 @@ class Film
   private string $coverImage;
   private int|null $genreId;
   private int|null $categoryId;
-  private int $ratingId;
+  private int|null $ratingId;
 
-  public function __construct(int $id, string $title, int $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null)
+  public function __construct(int $id, string $title, int|null $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null)
   {
     $this->id = $id;
     $this->title = $title;
@@ -26,7 +26,7 @@ class Film
     $this->runtime = $runtime;
     $this->releaseDate = $releaseDate;
 
-    if($coverImage == null){
+    if ($coverImage == null) {
       $this->coverImage = '~/img/placeholder.jpg';
     } else {
       $this->coverImage = $coverImage;
