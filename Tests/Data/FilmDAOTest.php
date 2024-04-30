@@ -82,7 +82,7 @@ class FilmDAOTest extends TestCase
   public function test_removeFilm()
   {
     $this->assertEquals($this->filmObject, $this->filmDAO->getById(1));
-    $this->assertEquals($this->filmObject, $this->filmDAO->getById(2));
+    $this->assertEquals($this->allObjects[0], $this->filmDAO->getById(2));
     $this->filmDAO->removeFilm(1);
     $this->filmDAO->removeFilm('Armageddon');
     $this->assertEquals(null, $this->filmDAO->getById(1));
