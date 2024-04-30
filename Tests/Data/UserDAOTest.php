@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Entities\User;
 use App\Data\UserDAO;
-use App\Exception\IsAdminUser;
+use App\Exceptions\IsAdminUser;
 use PHPUnit\Framework\TestCase;
 
 class UserDAOTest extends TestCase
@@ -51,13 +51,14 @@ class UserDAOTest extends TestCase
   {
     $this->userDAO->updateUser('joskeVer', 'joske', null, null);
     $this->assertEquals('joske', $this->userDAO->getByUserName('joske')->getUsername());
+
     $this->userDAO->updateUser('joske', null, 'joskie', null);
     $this->assertEquals('joskie', $this->userDAO->getByUserName('joske')->getPassword());
   }
 
   public function test_removeUser()
   {
-    $this->userDAO->removeUser('jeffrey@mail.com');
+    $this->userDAO->removeUser('jeffreyVer');
     $this->assertEquals(null, $this->userDAO->getByUserName('jeffreyVer'));
   }
 
