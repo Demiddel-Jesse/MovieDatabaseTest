@@ -61,8 +61,9 @@ class FilmDAOTest extends TestCase
 
   public function test_createFilm()
   {
-    $this->filmDAO->createFilm('Interstellar', null, null, null, null, null, null, null, 2);
+    $this->filmDAO->createFilm('InterStellar', null, null, null, null, null, null, null, 2);
     $this->assertEquals('InterStellar', $this->filmDAO->getByTitle('Interstellar')->getTitle());
+    $this->assertEquals(null, $this->filmDAO->getByTitle('Interstellar')->getRunTime());
   }
 
   public function test_updateFilm()
