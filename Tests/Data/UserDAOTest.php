@@ -43,7 +43,7 @@ class UserDAOTest extends TestCase
 
   public function test_createNewUser()
   {
-    $this->userDAO->createNewUser('joshua', 'joske', 'joshua@mail.info', false);
+    $this->userDAO->createNewUser('joshua', 'joske', 'joshua@mail.info');
     $this->assertEquals('joshua', $this->userDAO->getByUserName('joshua')->getUsername());
   }
 
