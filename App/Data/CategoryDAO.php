@@ -6,6 +6,7 @@ namespace App\Data;
 
 use App\Entities\Category;
 use App\Data\DBConfig;
+use App\Exception\AlreadyExistException;
 use App\Exception\DoesntExistException;
 use App\Exception\InvalidTypeException;
 use PDO;
