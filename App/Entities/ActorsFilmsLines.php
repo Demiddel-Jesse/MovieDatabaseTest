@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Entities;
+
+class ActorsFilmsLines
+{
+  private int $id;
+  private int $actorId;
+  private int $filmId;
+
+  public function __construct(int $id, int $actorId, int $filmId)
+  {
+    $this->id = $id;
+    $this->actorId = $actorId;
+    $this->filmId = $filmId;
+  }
+
+  public function getId()
+  {
+    return $this->id;
+  }
+  public function getActorId()
+  {
+    return $this->actorId;
+  }
+  public function getFilmId()
+  {
+    return $this->filmId;
+  }
+}
