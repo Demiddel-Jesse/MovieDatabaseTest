@@ -10,7 +10,7 @@ class UserListsLine
   private float|null $rating;
   private int $listTypeId;
 
-  public function __construct(int $id, int $userId, int $filmId, int $listTypeId, float $rating = null)
+  public function __construct(int $id, int $userId, int $filmId, int $listTypeId, float|null $rating = null)
   {
     $this->id = $id;
     $this->userId = $userId;

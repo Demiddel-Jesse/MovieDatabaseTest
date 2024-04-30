@@ -10,7 +10,7 @@ class Rating
   private string $name;
   private string|null $description;
 
-  public function __construct(int $id, string $name, string $description = null)
+  public function __construct(int $id, string $name, string|null $description = null)
   {
     $this->id = $id;
     $this->name = $name;
