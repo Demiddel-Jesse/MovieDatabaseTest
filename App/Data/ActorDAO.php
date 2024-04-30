@@ -75,7 +75,7 @@ class ActorDAO
   }
   public function getAll(): array
   {
-    $sql = 'SELECT * FROM `Actors`';
+    $sql = 'SELECT * FROM `Actors` ORDER BY `lastName`, `firstName` ASC';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
 
@@ -164,7 +164,7 @@ class ActorDAO
   // this is how images should be got
   public function testGetImage()
   {
-    $sql = 'SELECT `image` FROM `Actors`';
+    $sql = 'SELECT `image` FROM `Directors`';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $return = $stmt->fetch(PDO::FETCH_ASSOC);
