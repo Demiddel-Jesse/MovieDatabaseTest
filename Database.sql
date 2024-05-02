@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `FilmBibliotheek`.`Films` ;
 CREATE TABLE IF NOT EXISTS `FilmBibliotheek`.`Films` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `sortTitle` VARCHAR(255) NULL,
+  `sortTitle` VARCHAR(255) NOT NULL,
   `description` LONGTEXT NULL,
   `runtime` INT NULL,
   `releaseDate` DATE NULL,
