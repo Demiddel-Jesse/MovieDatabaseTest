@@ -32,7 +32,7 @@
           $user = unserialize($_SESSION['user']);
         }
       ?>
-        <li><a href="userPage.php?user=<?php echo $user->getId() ?>">Lists</a></li>
+        <li><a href="userDashboard.php?user=<?php echo $user->getId() ?>">Dashboard</a></li>
         <li><a href="logout.php">logout</a></li>
       <?php
       }
