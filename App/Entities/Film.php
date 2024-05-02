@@ -17,8 +17,9 @@ class Film
   private int|null $genreId;
   private int|null $categoryId;
   private int|null $ratingId;
+  private string|null $sortTitle;
 
-  public function __construct(int $id, string $title, int|null $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null)
+  public function __construct(int $id, string $title, int|null $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null, string|null $sortTitle)
   {
     $this->id = $id;
     $this->title = $title;
@@ -35,6 +36,7 @@ class Film
     $this->genreId = $genreId;
     $this->categoryId = $categoryId;
     $this->ratingId = $ratingId;
+    $this->sortTitle = $sortTitle;
   }
 
   public function getId()
@@ -77,5 +79,9 @@ class Film
   public function getRatingId()
   {
     return $this->ratingId;
+  }
+  public function getSortTitle()
+  {
+    return $this->sortTitle;
   }
 }

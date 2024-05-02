@@ -50,7 +50,7 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
       return $film;
     }
     return null;
@@ -70,7 +70,7 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
       return $film;
     }
     return null;
@@ -90,7 +90,7 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
 
       array_push($films, $film);
     }
@@ -119,7 +119,7 @@ class FilmDAO
     $stmt->execute();
   }
 
-  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId)
+  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId)
   {
     $sql = 'UPDATE `Films` SET';
     if ($title != null) {

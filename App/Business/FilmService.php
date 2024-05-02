@@ -46,7 +46,7 @@ class FilmService
     $this->dao->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, $coverImage, $genreId, $categoryId, $ratingId);
   }
 
-  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId): void
+  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId): void
   {
     $this->dao->updateFilm($currentFilm, $title, $sortTitle, $description, $runtime, $releaseDate, $coverImage, $genreId, $categoryId, $ratingId);
   }

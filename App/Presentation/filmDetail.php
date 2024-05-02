@@ -2,7 +2,7 @@
 
 if (isset($_SESSION['admin'])) {
 ?>
-	<a href="editFilm?film=<?php echo $film->getId() ?>">Edit film</a>
+	<a href="editFilm.php?film=<?php echo $film->getId() ?>">Edit film</a>
 <?php
 }
 
@@ -33,50 +33,54 @@ if (isset($_SESSION['admin'])) {
 		?>
 	</section>
 	<?php
-	$userListLine = $userListLineService->getUserListLine($user->getId(), $_GET['film']);
+	if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
+		$userListLine = $userListLineService->getUserListLine($user->getId(), $_GET['film']);
 	?>
-	<button class="js-buttonAddToUserLists" <?php echo $userListLine == null ? '' : 'hidden' ?>>Add to your lists</button>
-	<section class="js-personalRatingCheck c-personalRatingForm" <?php echo $userListLine == null ? 'hidden' : '' ?>>
-		<h2>Your rating</h2>
-		<form action="detail.php?action=userList&film=<?php echo $film->getId() ?>">
-			<?php
-			if ($userListLine != null) {
-				$userListLineListId = $userListLine->getListTypeId();
-				$userRating = $userListLine->getRating() * 10;
-			} else {
-				$userListLineListId = 0;
-				$userRating = 0;
-			}
-			?>
-			<label>
-				Your rating <br>
-				<input type="range" list="ratingValues" min="0" max="100" step="5" id="ratingValue" name="ratingValue" value="<?php echo $userRating ?>" class="js-currentRatingInput" />
-			</label>
-			<span class="js-currentRatingDisplay"></span>
-			<br>
-			<label>
-				List <br>
-				<select name="listTypeId" id="listTypeId" class="js-listTypeSelect">
-					<option value="NULL" <?php echo $userListLine == null ? 'selected' : '' ?>>Not in your list</option>
+		<button class="js-buttonAddToUserLists" <?php echo $userListLine == null ? '' : 'hidden' ?>>Add to your lists</button>
+		<section class="js-personalRatingCheck c-personalRatingForm" <?php echo $userListLine == null ? 'hidden' : '' ?>>
+			<h2>Your rating</h2>
+			<form action="detail.php?action=userList&film=<?php echo $film->getId() ?>" method="post">
+				<?php
+				if ($userListLine != null) {
+					$userListLineListId = $userListLine->getListTypeId();
+					$userRating = $userListLine->getRating() * 10;
+				} else {
+					$userListLineListId = 0;
+					$userRating = 0;
+				}
+				?>
+				<label>
+					Your rating <br>
+					<input type="range" list="ratingValues" min="0" max="100" step="5" id="ratingValue" name="ratingValue" value="<?php echo $userRating ?>" class="js-currentRatingInput" />
+				</label>
+				<span class="js-currentRatingDisplay"></span>
+				<br>
+				<label>
+					List <br>
+					<select name="listTypeId" id="listTypeId" class="js-listTypeSelect">
+						<option value="NULL" <?php echo $userListLine == null ? 'selected' : '' ?>>Not in your list</option>
 
-					<?php
-					$listTypes = $listTypeService->getAllListTypes();
+						<?php
+						$listTypes = $listTypeService->getAllListTypes();
 
-					foreach ($listTypes as $listType) {
-						if ($listType->getId() == $userListLineListId) {
-							$selected = 'selected';
-						} else {
-							$selected = '';
+						foreach ($listTypes as $listType) {
+							if ($listType->getId() == $userListLineListId) {
+								$selected = 'selected';
+							} else {
+								$selected = '';
+							}
+						?>
+							<option value="<?php echo $listType->getId() ?>" <?php echo $selected ?>><?php echo $listType->getName() ?></option>
+						<?php
 						}
-					?>
-						<option value="<?php echo $listType->getId() ?>" <?php echo $selected ?>><?php echo $listType->getName() ?></option>
-					<?php
-					}
-					?>
-				</select>
-			</label>
-			<br><br>
-			<button type="submit" class="js-personalRatingFormButton">Save</button>
-		</form>
-	</section>
+						?>
+					</select>
+				</label>
+				<br><br>
+				<button type="submit" class="js-personalRatingFormButton">Save</button>
+			</form>
+		</section>
+	<?php
+	}
+	?>
 </div>

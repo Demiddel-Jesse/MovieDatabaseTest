@@ -12,7 +12,7 @@ class FilmDAOTest extends TestCase
   private $filmObject;
   private $filmDAO;
   private $allObjects;
-
+  // Couple of these are currently broken due to the addition of sortTitle to Film object very late in development
   public function setUp(): void
   {
     $this->data = ['id' => 1, 'title' => 'The Death of Stalin', 'ratingId' => 1, 'description' => 'In early-1953 Moscow, under the Great Terror\'s heavy cloak of state paranoia, the ever-watchful Soviet leader, Joseph Stalin, collapses unexpectedly of a brain haemorrhage. As a result, when someone discovers his body the following morning, a frenetic surge of raw panic starts spreading like a virus among the senior members of the Council of Ministers, as they scramble to maintain order, weed out the competition, and ultimately take power. But in the middle of a gut-wrenching rollercoaster of incessant plotting, tireless machinations, and frail allegiances, absolutely no one is safe; not even the feared chief of the secret police, Lavrenti Beria. In the end, who will prevail after the death of Stalin?', 'runtime' => 107, 'releaseDate' => new DateTime('2017-09-08'), 'coverImage' => '~/img/placeholder.jpg', 'genreId' => 1, 'categoryId' => 1];
