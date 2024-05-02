@@ -55,6 +55,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
   } else {
     $description = $_POST['description'];
   }
+  if ($filmService->getFilm($title) != null) {
+    if ($filmService->getFilm($title)->getReleaseDate() == new DateTime($releaseDate)) {
+      $error .= 'Deze film bestaat al.<br>';
+    }
+  }
 
   if ($error == '') {
     $filmService->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, null, $genreId, $categoryId, 2);
