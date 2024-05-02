@@ -37,3 +37,22 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.detailWrapper {
+	display: flex;
+}
+
+.c-filmDetail {
+	width: 50%;
+
+	img {
+		width: 300px;
+		max-height: 300px;
+
+		object-fit: contain;
+	}
+}
+
+.c-personalRatingForm {
+	width: 50%;
+}

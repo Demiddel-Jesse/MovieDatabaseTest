@@ -16,7 +16,7 @@ class UserListLineService
     $this->userListLineDAO = new UserListsLineDAO();
   }
 
-  public function getUserListLine(int $userId, int $filmId): UserListsLine
+  public function getUserListLine(int $userId, int $filmId): ?UserListsLine
   {
     return $this->userListLineDAO->getByUserAndFilmId($userId, $filmId);
   }
