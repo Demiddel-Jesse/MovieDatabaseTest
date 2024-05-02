@@ -62,6 +62,10 @@ class Film
   {
     return $this->coverImage;
   }
+  public function setCoverImage(string $coverImage)
+  {
+    $this->coverImage = $coverImage;
+  }
   public function getGenreId()
   {
     return $this->genreId;
