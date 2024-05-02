@@ -41,7 +41,7 @@ class FilmService
     return $userListService->calcAverageRatingForFilm($filmId);
   }
 
-  public function createFilm(string $title, string $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId): void
+  public function createFilm(string $title, string $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId): void
   {
     $this->dao->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, $coverImage, $genreId, $categoryId, $ratingId);
   }

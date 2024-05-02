@@ -26,8 +26,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && $_GET['film']) {
   if ($_POST['sortTitle'] == null) {
     $error .= 'Geef een sorteer titel in.<br>';
   }
+  if (intval($_POST['runtime']) == 0 || intval($_POST['runtime']) < 0) {
+    $runtime = 0;
+  } else {
+    $runtime = intval($_POST['runtime']);
+  }
   if ($error == '') {
-    $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], intval($_POST['runtime']), $_POST['releaseDate'], null, intval($_POST['genreId']), intval($_POST['categoryId']), null);
+    $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], null, intval($_POST['genreId']), intval($_POST['categoryId']), null);
   }
 } else if (isset($_GET['action'])) {
   $error .= 'geen film gegeven in url.<br>';
@@ -54,6 +59,10 @@ if (isset($_GET['film'])) {
 }
 
 include 'Presentation/header.php';
+
+if ($error != "") {
+  echo "<span style=\"color:red;\">" . $error . "</span>";
+}
 
 echo $twig->render('filmEdit.twig', array('film' => $film, 'releaseDate' => $releaseDate, 'categories' => $categories, 'genres' => $genres));
 

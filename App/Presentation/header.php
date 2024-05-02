@@ -41,7 +41,7 @@
       if (isset($_SESSION['admin'])) {
       ?>
         <br>
-        <li><a href="filmAdd.php">Add film</a></li>
+        <li><a href="addFilm.php">Add film</a></li>
         <!-- <li><a href="actorAdd.php">Add actor</a></li>
         <li><a href="directorAdd.php">Add director</a></li>
         <li><a href="categoryEdit.php">Edit Categories</a></li>

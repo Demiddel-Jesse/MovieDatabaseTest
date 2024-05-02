@@ -97,7 +97,7 @@ class FilmDAO
     return $films;
   }
 
-  public function createFilm(string $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId)
+  public function createFilm(string $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId)
   {
     $sql = 'INSERT INTO `Films`(`title`, `sortTitle`, `description`, `runtime`, `releaseDate`, `coverImage`, `genreId`, `categoryId`, `ratingId`) VALUES (:title,:sortTitle,:description,:runtime,:releaseDate,:coverImage,:genreId,:categoryId,:ratingId);';
 
