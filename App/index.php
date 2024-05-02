@@ -11,6 +11,12 @@ use App\Business\FilmService;
 $filmService = new FilmService();
 $films = $filmService->getAllFilms();
 
+// TODO: add delete button for films for admins on detail page
+// TODO: register system for users
+// TODO: dashboard for users
+// TODO: list page for users
+// TODO: add and update categories/genres
+
 include 'Presentation/header.php';
 
 include 'Presentation/filmGrid.php';
