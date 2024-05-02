@@ -43,6 +43,10 @@ class UserListLineService
       $totalRating += $filmRating->getRating();
     }
 
+    if ($totalRating == 0) {
+      return 0;
+    }
+
     $averageRating = $totalRating / $count;
     return round($averageRating * 2, 1) / 2;
   }
