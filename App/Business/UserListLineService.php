@@ -31,6 +31,11 @@ class UserListLineService
     return $this->userListLineDAO->getAllForFilmId($filmId);
   }
 
+  public function getListLinesForUserFromList(int $userId, int $listId): array
+  {
+    return $this->userListLineDAO->getAllForUserIdAndListId($userId, $listId);
+  }
+
   public function calcAverageRatingForFilm(int $filmId): float
   {
     // should do this in the data layer with sql

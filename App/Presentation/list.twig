@@ -1,0 +1,16 @@
+<h1>Welcome {{ user.name }}</h1>
+<section class="c-dashboared__listLinks">
+	<h2>Get specific list</h2>
+	<ul>
+		{% for listType in listTypes %}
+		<li>
+			<a href="list.php?list={{ listType.id }}&film">{{ listType.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+<h2>{{ listType.name }}</h2>
+{% if type == 'film' %} {% if lines|length < 1 %}
+<p>Geen films in deze lijst</p>
+<a href="index.php">Voeg er toe</a>
+{% else %} {% include "filmTable.twig" %}{% endif %} {% endif %}
