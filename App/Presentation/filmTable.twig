@@ -1,0 +1,29 @@
+<table border="1">
+	<tr>
+		<th>filmImage</th>
+		<th>filmName</th>
+		<th>Your rating</th>
+		<th>list</th>
+		<th>link</th>
+	</tr>
+	{% for line in lines %}
+	<tr>
+		<td>
+			<img
+				src="{{ line.film.coverImage }}"
+				alt="{{ line.film.title }} Poster"
+				height="200" />
+		</td>
+		<td>
+			{{ line.film.title }}
+		</td>
+		<td>{{ line.rating }}/10</td>
+		<td>
+			{{ line.listType.name }}
+		</td>
+		<td>
+			<a href="detail.php?film={{ line.film.id }}"> link </a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>

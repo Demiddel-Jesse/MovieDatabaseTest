@@ -33,7 +33,7 @@
           $user = unserialize($_SESSION['user']);
         }
       ?>
-        <li><a href="userDashboard.php?user=<?php echo $user->getId() ?>">Dashboard</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="logout.php">logout</a></li>
       <?php
       }
@@ -42,7 +42,7 @@
       if (isset($_SESSION['admin'])) {
       ?>
         <br>
-        <li><a href="addFilm.php">Add film</a></li>
+        <li><a href="addFilm.php">Add film to database</a></li>
         <!-- <li><a href="actorAdd.php">Add actor</a></li>
         <li><a href="directorAdd.php">Add director</a></li>
         <li><a href="categoryEdit.php">Edit Categories</a></li>

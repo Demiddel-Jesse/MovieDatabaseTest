@@ -1,0 +1,23 @@
+<h1>Welcome {{ user.username }}</h1>
+<section class="c-dashboared__listLinks">
+	<h2>Get specific list</h2>
+	<ul>
+		{% for listType in listTypes %}
+		<li>
+			<a href="userList.php?list={{ listType.id }}">{{ listType.name }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+<section class="c-dashboardWrapper">
+	<article>
+		<h2>Your films</h2>
+		{% include "filmTable.twig" %}
+	</article>
+
+	<article>
+		<h2>stats</h2>
+		<p>Total watchtime: {{ totalTime }} minutes</p>
+		<p>average rating given to films: {{ averageRating }}/10</p>
+	</article>
+</section>
