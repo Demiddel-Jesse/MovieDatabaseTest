@@ -1,5 +1,4 @@
 <h1>Edit film</h1>
-
 <form
 	action="editFilm.php?film={{ film.id }}&action=edit"
 	method="post">
@@ -80,4 +79,8 @@
   TODO: figure out how to save images with php
   #}
   <button type="submit">submit</button>
+</form>
+<br><br>
+<form action="editFilm.php?film={{ film.id }}&action=remove" method="post">
+	<button type="submit">Remove Film</button>
 </form>

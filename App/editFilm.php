@@ -18,7 +18,7 @@ if (!isset($_SESSION['admin'])) {
 $filmService = new FilmService();
 $error = '';
 
-if (isset($_GET['action']) && $_GET['action'] == 'edit' && $_GET['film']) {
+if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film'])) {
 
   if ($_POST['title'] == null) {
     $error .= 'Geef een titel in.<br>';
@@ -34,7 +34,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && $_GET['film']) {
   if ($error == '') {
     $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], null, intval($_POST['genreId']), intval($_POST['categoryId']), null);
   }
-} else if (isset($_GET['action'])) {
+} else if (isset($_GET['action']) && $_GET['action'] == 'edit') {
+  $error .= 'geen film gegeven in url.<br>';
+}
+if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film'])) {
+} else if (isset($_GET['action']) && $_GET['action'] == 'remove') {
   $error .= 'geen film gegeven in url.<br>';
 }
 
