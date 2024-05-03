@@ -11,8 +11,6 @@ use App\Business\FilmService;
 $filmService = new FilmService();
 $films = $filmService->getAllFilms();
 
-// TODO: dashboard for users
-// TODO: list page for users
 // TODO: add and update categories/genres
 
 include 'Presentation/header.php';
