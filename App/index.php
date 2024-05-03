@@ -11,7 +11,6 @@ use App\Business\FilmService;
 $filmService = new FilmService();
 $films = $filmService->getAllFilms();
 
-// TODO: register system for users
 // TODO: dashboard for users
 // TODO: list page for users
 // TODO: add and update categories/genres
