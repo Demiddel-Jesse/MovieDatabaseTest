@@ -11,8 +11,6 @@ use App\Business\FilmService;
 $filmService = new FilmService();
 $films = $filmService->getAllFilms();
 
-// TODO: add and update categories/genres
-
 include 'Presentation/header.php';
 
 include 'Presentation/filmGrid.php';

@@ -44,9 +44,9 @@
         <br>
         <li><a href="addFilm.php">Add film to database</a></li>
         <!-- <li><a href="actorAdd.php">Add actor</a></li>
-        <li><a href="directorAdd.php">Add director</a></li>
-        <li><a href="categoryEdit.php">Edit Categories</a></li>
-        <li><a href="genreEdit.php">Edit Genres</a></li> -->
+        <li><a href="directorAdd.php">Add director</a></li> -->
+        <li><a href="categoryAdmin.php">Adjust Categories</a></li>
+        <li><a href="genreAdmin.php">Adjust Genres</a></li>
       <?php
       }
       ?>
