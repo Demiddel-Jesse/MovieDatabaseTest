@@ -21,6 +21,8 @@
 	img {
 		width: 200px;
 		height: 280px;
+
+		object-fit: cover;
 	}
 
 	p {
