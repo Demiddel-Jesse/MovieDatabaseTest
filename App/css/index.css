@@ -60,3 +60,7 @@
 .c-personalRatingForm {
 	width: 50%;
 }
+
+.js-buttonAddToUserLists {
+	max-height: 40px;
+}

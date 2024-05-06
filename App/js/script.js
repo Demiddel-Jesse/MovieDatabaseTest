@@ -8,13 +8,7 @@ function startUp() {
 		writeCurrentRating();
 		disableButton(document.querySelector(".js-personalRatingFormButton"));
 		listenForRatingUpdates();
-		document
-			.querySelector(".js-buttonAddToUserLists")
-			.addEventListener("click", (event) => {
-				document.querySelector(".js-personalRatingCheck").hidden = false;
-				// TODO add fetch to add it to your lists
-				document.querySelector(".js-buttonAddToUserLists").hidden = true;
-			});
+		listenForAddToListButton();
 	}
 }
 
@@ -38,12 +32,108 @@ function disableButton(button) {
 function listenForRatingUpdates() {
 	var input = document.querySelector(".js-currentRatingInput");
 	var listTypeSelect = document.querySelector(".js-listTypeSelect");
-	input.addEventListener("onchange", (event) => {
-		//TODO: fetch to updateRating for userListLine
+
+	const pendingInputs = new WeakMap();
+	const pendingSelects = new WeakMap();
+
+	input.addEventListener("input", (event) => {
+		var formData = new FormData();
+		formData.append("action", "updateRating");
+		formData.append("rating", input.value);
+		formData.append("filmId", input.dataset.filmid);
+		const controller = new AbortController();
+		const signal = controller.signal;
+
+		const previousController = pendingInputs.get(input);
+
+		if (previousController) {
+			previousController.abort();
+		}
+
+		pendingInputs.set(input, controller);
+
+		fetch("ajax_userlists.php", {
+			method: "post",
+			mode: "cors",
+			signal: signal,
+			body: formData,
+		})
+			.then((response) => {
+				// console.log(response);
+			})
+			.catch(function (err) {
+				if (err.name === "AbortError") {
+					console.log("fetch aborted");
+				} else {
+					console.log("Failed to fetch page: ", err);
+				}
+			});
 	});
-	listTypeSelect.addEventListener("onchange", (event) => {
-		// TODO: fetch to updateListType for userListLine
+
+	listTypeSelect.addEventListener("input", (event) => {
+		var formData = new FormData();
+		formData.append("action", "updateListType");
+		formData.append("listTypeId", listTypeSelect.value);
+		formData.append("filmId", listTypeSelect.dataset.filmid);
+
+		const controller = new AbortController();
+		const signal = controller.signal;
+
+		const previousController = pendingSelects.get(listTypeSelect);
+
+		if (previousController) {
+			previousController.abort();
+		}
+
+		pendingSelects.set(listTypeSelect, controller);
+
+		fetch("ajax_userlists.php", {
+			method: "post",
+			mode: "cors",
+			body: formData,
+			signal: signal,
+		})
+			.then((response) => {
+				// console.log(response);
+			})
+			.catch(function (err) {
+				if (err.name === "AbortError") {
+					console.log("fetch aborted");
+				} else {
+					console.log("Failed to fetch page: ", err);
+				}
+			});
 	});
+}
+
+function listenForAddToListButton() {
+	document
+		.querySelector(".js-buttonAddToUserLists")
+		.addEventListener("click", (event) => {
+			document.querySelector(".js-personalRatingCheck").hidden = false;
+			document.querySelector(".js-buttonAddToUserLists").hidden = true;
+			document.querySelector(".js-listTypeSelect").value = 1;
+			console.log(
+				document.querySelector(".js-buttonAddToUserLists").dataset.filmid
+			);
+			var formData = new FormData();
+			formData.append("action", "newLine");
+			formData.append(
+				"filmId",
+				document.querySelector(".js-buttonAddToUserLists").dataset.filmid
+			);
+			fetch("ajax_userlists.php", {
+				method: "post",
+				mode: "cors",
+				body: formData,
+			})
+				.then((response) => {
+					// console.log(response);
+				})
+				.catch(function (err) {
+					console.log("Failed to fetch page: ", err);
+				});
+		});
 }
 
 //#endregion

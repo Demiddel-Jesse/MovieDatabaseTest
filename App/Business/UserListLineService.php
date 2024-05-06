@@ -72,7 +72,7 @@ class UserListLineService
     return round($averageRating * 2, 1) / 2;
   }
 
-  public function createNewLine(int $userId, int $filmId, int $listTypeId, float $rating): void
+  public function createNewLine(int $userId, int $filmId, int $listTypeId, float|null $rating = null): void
   {
     if ($rating == null) {
       $this->userListLineDAO->createNewUserListLine($userId, $filmId, $listTypeId);
