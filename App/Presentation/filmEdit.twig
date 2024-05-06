@@ -1,0 +1,86 @@
+<h1>Edit film</h1>
+<form
+	action="editFilm.php?film={{ film.id }}&action=edit"
+	method="post">
+	<label>
+		title
+		<input
+			type="text"
+			name="title"
+			id="title"
+			value="{{ film.title }}"
+			required />
+	</label>
+	<br /><br />
+	<label>
+		sortTitle
+		<input
+			type="text"
+			name="sortTitle"
+			id="sortTitle"
+			value="{{ film.sortTitle }}"
+			required />
+	</label>
+	<br /><br />
+	<label>
+		description
+		<textarea
+			type="text"
+			name="description"
+			id="description"
+			>{{ film.description }}
+    </textarea>
+	</label>
+	<br /><br />
+	<label>
+		runtime in minutes
+		<input
+			type="number"
+			min="0"
+			max="500"
+			name="runtime"
+			id="runtime"
+			value="{{ film.runtime }}" />
+	</label>
+	<br /><br />
+	<label>
+		releaseDate
+		<input
+			type="date"
+			name="releaseDate"
+			id="releaseDate"
+			value="{{ releaseDate }}" />
+	</label>
+	<br /><br />
+	<label>
+		genre
+		<select
+			name="genreId"
+			id="genreId">
+			{% for genre in genres %}
+			<option value="{{ genre.id }}" {% if genre.id == film.genreId %}selected{% endif %}>{{ genre.name }}</option>
+			{% endfor %}
+		</select>
+	</label>
+	<br /><br />
+	<label>
+		category
+		<select
+			name="categoryId"
+			id="categoryId">
+			{% for category in categories %}
+			<option value="{{ category.id }}" {% if category.id == film.categoryId %}selected{% endif %} >{{ category.name }}</option>
+			{% endfor %}
+		</select>
+	</label>
+	<br /><br />
+	{# <label> image </label>
+	<br /><br /> 
+  TODO: figure out how to save images with php
+  #}
+  <button type="submit">submit</button>
+</form>
+<br><br>
+<form action="editFilm.php?film={{ film.id }}&action=remove" method="post">
+	<button type="submit">Remove Film</button>
+</form>

@@ -41,12 +41,12 @@ class FilmService
     return $userListService->calcAverageRatingForFilm($filmId);
   }
 
-  public function createFilm(string $title, string $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId): void
+  public function createFilm(string $title, string $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId): void
   {
     $this->dao->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, $coverImage, $genreId, $categoryId, $ratingId);
   }
 
-  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId): void
+  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId): void
   {
     $this->dao->updateFilm($currentFilm, $title, $sortTitle, $description, $runtime, $releaseDate, $coverImage, $genreId, $categoryId, $ratingId);
   }
@@ -54,5 +54,10 @@ class FilmService
   public function removeFilm(int|string $film): void
   {
     $this->dao->removeFilm($film);
+  }
+
+  public function searchFilms(string $searchString): ?array
+  {
+    return $this->dao->searchFilms($searchString);
   }
 }

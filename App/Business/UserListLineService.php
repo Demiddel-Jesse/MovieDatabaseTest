@@ -16,7 +16,7 @@ class UserListLineService
     $this->userListLineDAO = new UserListsLineDAO();
   }
 
-  public function getUserListLine(int $userId, int $filmId): UserListsLine
+  public function getUserListLine(int $userId, int $filmId): ?UserListsLine
   {
     return $this->userListLineDAO->getByUserAndFilmId($userId, $filmId);
   }
@@ -31,6 +31,11 @@ class UserListLineService
     return $this->userListLineDAO->getAllForFilmId($filmId);
   }
 
+  public function getListLinesForUserFromList(int $userId, int $listId): array
+  {
+    return $this->userListLineDAO->getAllForUserIdAndListId($userId, $listId);
+  }
+
   public function calcAverageRatingForFilm(int $filmId): float
   {
     // should do this in the data layer with sql
@@ -41,6 +46,10 @@ class UserListLineService
     foreach ($allFilmRatings as $filmRating) {
       $count++;
       $totalRating += $filmRating->getRating();
+    }
+
+    if ($totalRating == 0) {
+      return 0;
     }
 
     $averageRating = $totalRating / $count;
@@ -63,7 +72,7 @@ class UserListLineService
     return round($averageRating * 2, 1) / 2;
   }
 
-  public function createNewLine(int $userId, int $filmId, int $listTypeId, float $rating): void
+  public function createNewLine(int $userId, int $filmId, int $listTypeId, float|null $rating = null): void
   {
     if ($rating == null) {
       $this->userListLineDAO->createNewUserListLine($userId, $filmId, $listTypeId);

@@ -1,0 +1,76 @@
+<?php
+
+declare(strict_types=1);
+
+session_start();
+
+require_once 'bootstrap.php';
+
+use App\Business\FilmService;
+use App\Business\CategoryService;
+use App\Business\GenreService;
+
+if (!isset($_SESSION['admin'])) {
+  header('location: index.php');
+  exit(0);
+}
+
+$filmService = new FilmService();
+$error = '';
+
+if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film'])) {
+
+  if ($_POST['title'] == null) {
+    $error .= 'Geef een titel in.<br>';
+  }
+  if ($_POST['sortTitle'] == null) {
+    $error .= 'Geef een sorteer titel in.<br>';
+  }
+  if (intval($_POST['runtime']) == 0 || intval($_POST['runtime']) < 0) {
+    $runtime = 0;
+  } else {
+    $runtime = intval($_POST['runtime']);
+  }
+  if ($error == '') {
+    $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], null, intval($_POST['genreId']), intval($_POST['categoryId']), null);
+  }
+} else if (isset($_GET['action']) && $_GET['action'] == 'edit') {
+  $error .= 'geen film gegeven in url.<br>';
+}
+if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film'])) {
+  $filmService->removeFilm(intval($_GET['film']));
+  header('location: index.php');
+  exit(0);
+} else if (isset($_GET['action']) && $_GET['action'] == 'remove') {
+  $error .= 'geen film gegeven in url.<br>';
+}
+
+if (isset($_GET['film'])) {
+  $film = $filmService->getFilm(intval($_GET['film']));
+
+  if ($film->getReleaseDate() != null) {
+    $releaseDateDT = $film->getReleaseDate();
+    $releaseDate = $releaseDateDT->format('Y-m-d');
+  } else {
+    $releaseDate = null;
+  }
+
+  $categoryService = new CategoryService();
+  $genreService = new GenreService();
+
+  $genres = $genreService->getAllGenres();
+  $categories = $categoryService->getAllCategories();
+} else {
+  header('location: index.php');
+  exit(0);
+}
+
+include 'Presentation/header.php';
+
+if ($error != "") {
+  echo "<span style=\"color:red;\">" . $error . "</span>";
+}
+
+echo $twig->render('filmEdit.twig', array('film' => $film, 'releaseDate' => $releaseDate, 'categories' => $categories, 'genres' => $genres));
+
+include 'Presentation/footer.php';

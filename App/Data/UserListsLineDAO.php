@@ -99,6 +99,24 @@ class UserListsLineDAO
     return $userListLines;
   }
 
+  public function getAllForUserIdAndListId(int $userId, int $listId): array
+  {
+    $sql = 'SELECT * FROM `UserListsLines` WHERE `UserId` = :userId AND `ListTypesId` = :listId ORDER BY `id` ASC';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':userId', $userId);
+    $stmt->bindValue(':listId', $listId);
+    $stmt->execute();
+    $userListLinesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $userListLines = array();
+
+    foreach ($userListLinesData as $userListLineData) {
+      array_push($userListLines, new UserListsLine($userListLineData['id'], $userListLineData['UserId'], $userListLineData['FilmId'], $userListLineData['ListTypesId'], floatVal($userListLineData['rating'])));
+    }
+
+    return $userListLines;
+  }
+
   public function getAllForFilmId(int $filmId): array
   {
     $sql = 'SELECT * FROM `UserListsLines` WHERE `FilmId` = :filmId ORDER BY `id` ASC';

@@ -8,7 +8,7 @@ use App\Data\RatingDAO;
 use App\Entities\Rating;
 use App\Exceptions\InvalidTypeException;
 
-class UserListLineService
+class RatingService
 {
   private $ratingDAO;
 

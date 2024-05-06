@@ -50,7 +50,7 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
       return $film;
     }
     return null;
@@ -70,7 +70,7 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
       return $film;
     }
     return null;
@@ -90,14 +90,14 @@ class FilmDAO
       if ($filmData['releaseDate'] != null) {
         $dateTime = new DateTime($filmData['releaseDate']);
       }
-      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId']);
+      $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
 
       array_push($films, $film);
     }
     return $films;
   }
 
-  public function createFilm(string $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId)
+  public function createFilm(string $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId)
   {
     $sql = 'INSERT INTO `Films`(`title`, `sortTitle`, `description`, `runtime`, `releaseDate`, `coverImage`, `genreId`, `categoryId`, `ratingId`) VALUES (:title,:sortTitle,:description,:runtime,:releaseDate,:coverImage,:genreId,:categoryId,:ratingId);';
 
@@ -119,7 +119,7 @@ class FilmDAO
     $stmt->execute();
   }
 
-  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, DateTime|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId)
+  public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId)
   {
     $sql = 'UPDATE `Films` SET';
     if ($title != null) {
@@ -240,5 +240,30 @@ class FilmDAO
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':film', $film);
     $stmt->execute();
+  }
+
+  public function searchFilms(string $searchString): ?array
+  {
+    $sql = 'SELECT * FROM `Films` WHERE `title` LIKE :searchString ORDER BY `sortTitle` ASC';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':searchString', '%' . $searchString . '%');
+    $stmt->execute();
+
+    $filmsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() > 0) {
+      $films = array();
+      foreach ($filmsData as $filmData) {
+        $dateTime = null;
+        if ($filmData['releaseDate'] != null) {
+          $dateTime = new DateTime($filmData['releaseDate']);
+        }
+        $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
+
+        array_push($films, $film);
+      }
+      return $films;
+    } else {
+      return null;
+    }
   }
 }
