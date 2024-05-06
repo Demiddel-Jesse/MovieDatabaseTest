@@ -55,10 +55,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
   } else {
     $description = $_POST['description'];
   }
-  // All for file upload 
-  // cant get it to work because i need permissions for the directory for someone but cant find out who to give permissions
-  $coverImagePath = null;
-  /* 
+  // if permissions for folder don't work comment out following code 
   if ($_FILES['image']['name'] != null) {
     $target_dir = "img/";
     $target_file = $target_dir . str_replace(' ', '', $_POST['title'] . '.png');
@@ -92,8 +89,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
   } else {
     $coverImagePath = null;
   }
-  */
+  // stop commenting out code
 
+  // uncomment following code
+  // $coverImagePath = null;
 
   if ($error == '' && $filmService->getFilm($title) != null) {
     if ($filmService->getFilm($title)->getReleaseDate() == new DateTime($releaseDate)) {
