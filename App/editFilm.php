@@ -38,6 +38,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
   $error .= 'geen film gegeven in url.<br>';
 }
 if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film'])) {
+  $filmService->removeFilm(intval($_GET['film']));
+  header('index.php');
+  exit(0);
 } else if (isset($_GET['action']) && $_GET['action'] == 'remove') {
   $error .= 'geen film gegeven in url.<br>';
 }

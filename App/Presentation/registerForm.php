@@ -15,4 +15,6 @@
   <label>repeat password
     <input name="password2" id="password2" type="password" required>
   </label>
+  <br><br>
+  <button type="submit">submit</button>
 </form>

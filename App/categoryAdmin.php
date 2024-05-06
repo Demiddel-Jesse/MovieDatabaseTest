@@ -13,7 +13,7 @@ use App\Exceptions\AlreadyExistException;
 
 $categoryService = new CategoryService;
 $type = 'category';
-$list = $categoryService->getAllCategories();
+
 
 $error = '';
 
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
   }
   if ($_GET['action'] == 'adjust') {
     try {
-      $categoryService->updateCategory($_POST[$type], $_POST['name']);
+      $categoryService->updateCategory(intval($_POST[$type]), $_POST['name']);
     } catch (DoesntExistException $th) {
       $error .= 'genre bestaat niet.<br>';
     } catch (InvalidTypeException $th) {
@@ -35,6 +35,8 @@ if (isset($_GET['action'])) {
     }
   }
 }
+
+$list = $categoryService->getAllCategories();
 
 include 'Presentation/header.php';
 

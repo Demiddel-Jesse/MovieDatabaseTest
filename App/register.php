@@ -20,7 +20,7 @@ if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
 $error = '';
 
 if (isset($_GET['action']) && $_GET['action'] == 'register') {
-  if ($_POST['password'] == $_GET['password2']) {
+  if ($_POST['password'] == $_POST['password2']) {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
       try {
         $userService->register($_POST['username'], $_POST['password'], $_POST['email']);
