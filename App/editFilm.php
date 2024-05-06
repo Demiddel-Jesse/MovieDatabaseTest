@@ -31,8 +31,47 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
   } else {
     $runtime = intval($_POST['runtime']);
   }
+
+  $target_dir = "img/";
+  $target_file = $target_dir . str_replace(' ', '', $_POST['title'] . '.png');
+  if (!isset($_POST['imageNull'])) {
+    if ($_FILES['image']['name'] != null) {
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      $check = getimagesize($_FILES["image"]["tmp_name"]);
+      if ($check !== false) {
+        $uploadOk = 1;
+      } else {
+        $error .= "File is not an image.";
+        $uploadOk = 0;
+      }
+
+      if ($_FILES["image"]["size"] > 16000000) {
+        $error .= "Sorry, your file is too large.";
+        $uploadOk = 0;
+      }
+      if ($uploadOk == 0) {
+        $error .= "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+      } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], './' . $target_file)) {
+          $coverImagePath = '~/' . $target_file;
+        } else {
+          $error .= "Sorry, there was an error uploading your file.";
+        }
+      }
+    } else {
+      $coverImagePath = null;
+    }
+  } else {
+    if (file_exists($target_file)) {
+      unlink($target_file);
+    }
+    $coverImagePath = '~/img/placeholder.jpg';
+  }
+
   if ($error == '') {
-    $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], null, intval($_POST['genreId']), intval($_POST['categoryId']), null);
+    $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], $coverImagePath, intval($_POST['genreId']), intval($_POST['categoryId']), null);
   }
 } else if (isset($_GET['action']) && $_GET['action'] == 'edit') {
   $error .= 'geen film gegeven in url.<br>';
@@ -53,6 +92,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film']
 
 if (isset($_GET['film'])) {
   $film = $filmService->getFilm(intval($_GET['film']));
+
+  $film->setCoverImage(str_replace('~', '.', $film->getCoverImage()));
 
   if ($film->getReleaseDate() != null) {
     $releaseDateDT = $film->getReleaseDate();

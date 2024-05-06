@@ -1,7 +1,8 @@
 <h1>Edit film</h1>
 <form
 	action="editFilm.php?film={{ film.id }}&action=edit"
-	method="post">
+	method="post"
+	enctype="multipart/form-data">
 	<label>
 		title
 		<input
@@ -74,10 +75,19 @@
 		</select>
 	</label>
 	<br /><br />
-	{# <label> image </label>
+	<p>current image
+		<img src="{{film.coverImage}}" alt="{{film.title}}">
+	</p>
+	<label>new image 
+		<input type="file" id="image" name="image" >
+		Max 16MB
+	</label>
+	<br><br>
+	<label>
+		set image to null
+		<input type="checkbox" name="imageNull" id="imageNull" value="1">
+	</label>
 	<br /><br /> 
-  TODO: figure out how to save images with php
-  #}
   <button type="submit">submit</button>
 </form>
 <br><br>
