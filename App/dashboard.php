@@ -17,7 +17,7 @@ $listTypeService = new ListTypeService();
 $filmService = new FilmService();
 
 if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
-  header('index.php');
+  header('location: index.php');
   exit(0);
 }
 
@@ -31,8 +31,16 @@ if (isset($_SESSION['admin'])) {
 
 $listTypes = $listTypeService->getAllListTypes();
 $listLinesForUser = $userListLineService->getListLinesForUser($user->getId());
+
+if ($listLinesForUser == null) {
+  // header('location: index.php?reason=none');
+  // exit(0);
+
+  $averageRating = 0;
+} else {
+  $averageRating = $userListLineService->calcAverageRatingForUser($user->getId());
+}
 $userListsLines = array();
-$averageRating = $userListLineService->calcAverageRatingForUser($user->getId());
 $totalTime = 0;
 
 foreach ($listLinesForUser as $listLine) {

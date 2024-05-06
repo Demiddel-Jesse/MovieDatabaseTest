@@ -35,7 +35,7 @@ if (isset($_GET['action']) && $_GET['action'] = 'login') {
       } else {
         $_SESSION['user'] = serialize($user);
       }
-      header('location: index.php');
+      header('location: location: index.php');
       exit(0);
     } catch (DoesntExistException $th) {
       $error .= "Admin bestaat niet.<br>";

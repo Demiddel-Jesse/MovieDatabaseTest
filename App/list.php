@@ -17,7 +17,7 @@ $listTypeService = new ListTypeService();
 $filmService = new FilmService();
 
 if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
-  header('index.php');
+  header('location: index.php');
   exit(0);
 }
 

@@ -11,7 +11,7 @@ use App\Business\CategoryService;
 use App\Business\GenreService;
 
 if (!isset($_SESSION['admin'])) {
-  header('index.php');
+  header('location: index.php');
   exit(0);
 }
 
@@ -39,7 +39,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
 }
 if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film'])) {
   $filmService->removeFilm(intval($_GET['film']));
-  header('index.php');
+  header('location: index.php');
   exit(0);
 } else if (isset($_GET['action']) && $_GET['action'] == 'remove') {
   $error .= 'geen film gegeven in url.<br>';
@@ -61,7 +61,7 @@ if (isset($_GET['film'])) {
   $genres = $genreService->getAllGenres();
   $categories = $categoryService->getAllCategories();
 } else {
-  header('index.php');
+  header('location: index.php');
   exit(0);
 }
 

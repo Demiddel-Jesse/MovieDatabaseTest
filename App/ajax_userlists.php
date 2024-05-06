@@ -14,7 +14,7 @@ if (isset($_SESSION['user'])) {
 } else if (isset($_SESSION['admin'])) {
   $user = unserialize($_SESSION['admin']);
 } else {
-  header('index.php');
+  header('location: index.php');
   exit(0);
 }
 

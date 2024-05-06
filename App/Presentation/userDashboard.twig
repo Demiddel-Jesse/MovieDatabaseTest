@@ -12,7 +12,10 @@
 <section class="c-dashboardWrapper">
 	<article>
 		<h2>Your films</h2>
-		{% include "filmTable.twig" %}
+		{% if lines|length < 1 %}
+		<p>Geen films in uw lijsten</p>
+		<a href="index.php">Voeg er toe</a>
+		{% else %} {% include "filmTable.twig" %}{% endif %}
 	</article>
 
 	<article>

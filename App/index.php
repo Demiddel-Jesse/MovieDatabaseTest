@@ -25,10 +25,14 @@ if (isset($_GET['searchName'])) {
   }
 }
 
+if (isset($_GET['reason']) && $_GET['reason'] == 'none') {
+  $error .= 'Geen films in uw lijst, voeg een film toe om uw dashboard te zien.<br>';
+}
+
 include 'Presentation/header.php';
 
 if ($error != "") {
-  echo "<span style=\"color:red;\">" . $error . "</span>";
+  echo "<span style=\"color:red;\">" . $error . "</span><br>";
 }
 
 include 'Presentation/filmGrid.php';
