@@ -78,7 +78,7 @@
 
 		position: relative;
 		> div {
-			top: 50px;
+			top: 75px;
 			position: sticky;
 		}
 	}
