@@ -74,6 +74,13 @@
 		padding: 1rem;
 		padding-top: 0;
 		text-align: center;
+		/* height: fit-content; */
+
+		position: relative;
+		> div {
+			top: 50px;
+			position: sticky;
+		}
 	}
 }
 
@@ -121,6 +128,11 @@ table {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 2rem;
+
+	background-color: white;
+
+	top: 0;
+	position: sticky;
 }
 
 .c-nav__standard {
