@@ -6,5 +6,5 @@ session_start();
 
 unset($_SESSION["admin"]);
 unset($_SESSION["user"]);
-header('location: location: index.php');
+header('location: index.php');
 exit(0);
