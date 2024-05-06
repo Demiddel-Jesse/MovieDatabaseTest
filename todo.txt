@@ -1,5 +1,4 @@
 !merge after each of these todos to main
 
-TODO: add image upload and remove for addfilm and editfilm
 TODO: fancify most pages a bit
 TODO: maybe try to add actors
