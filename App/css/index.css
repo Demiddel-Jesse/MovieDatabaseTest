@@ -64,3 +64,78 @@
 .js-buttonAddToUserLists {
 	max-height: 40px;
 }
+
+.c-dashboardWrapper {
+	display: flex;
+	> :first-child {
+		width: 70%;
+	}
+	> :nth-child(2) {
+		padding: 1rem;
+		padding-top: 0;
+		text-align: center;
+	}
+}
+
+.c-dashboared__listLinks {
+	ul {
+		list-style: none;
+		padding: 0;
+		display: flex;
+
+		> :first-child {
+			margin: 0 1rem 0 0;
+		}
+	}
+	li {
+		margin: 0 1rem;
+	}
+}
+
+tbody {
+	> :first-child {
+		background-color: black !important;
+		color: white;
+	}
+
+	> :nth-child(odd) {
+		background-color: #dddddd;
+	}
+	> :nth-child(even) {
+		background-color: white;
+	}
+}
+
+td,
+th {
+	padding: 0.5rem;
+	text-align: center;
+}
+
+table {
+	border: 1px solid black;
+	background-color: black;
+}
+
+.c-nav {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.c-nav__standard {
+	> :first-child {
+		padding: 0 1rem 0 0;
+	}
+}
+
+.c-nav__standard,
+.c-nav__admin {
+	list-style: none;
+	padding: 0;
+	display: flex;
+
+	li {
+		padding: 0 1rem;
+	}
+}

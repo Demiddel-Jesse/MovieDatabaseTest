@@ -14,8 +14,8 @@
 </head>
 
 <body>
-  <nav>
-    <ul>
+  <nav class="c-nav">
+    <ul class="c-nav__standard">
       <li><a href="index.php">Home</a></li>
       <?php
       if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
@@ -25,6 +25,7 @@
       <?php
       }
       ?>
+
       <?php
       if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
         if (isset($_SESSION['admin'])) {
@@ -38,10 +39,11 @@
       <?php
       }
       ?>
+    </ul>
+    <ul class="c-nav__admin">
       <?php
       if (isset($_SESSION['admin'])) {
       ?>
-        <br>
         <li><a href="addFilm.php">Add film to database</a></li>
         <!-- <li><a href="actorAdd.php">Add actor</a></li>
         <li><a href="directorAdd.php">Add director</a></li> -->
