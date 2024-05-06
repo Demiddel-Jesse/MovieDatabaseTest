@@ -47,6 +47,7 @@ if ($listLinesForUser == null) {
 $userListsLines = array();
 $totalTime = 0;
 $url = basename($_SERVER['REQUEST_URI']) . '&action=remove';
+$genrePercentages = $userListLineService->calcGenrePercentages($user->getId());
 
 foreach ($listLinesForUser as $listLine) {
   $film = $filmService->getFilm($listLine->getFilmId());
@@ -59,6 +60,6 @@ foreach ($listLinesForUser as $listLine) {
 
 include 'Presentation/header.php';
 
-echo $twig->render('userDashboard.twig', array('listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'totalTime' => $totalTime, 'averageRating' => $averageRating, 'url' => $url));
+echo $twig->render('userDashboard.twig', array('listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'totalTime' => $totalTime, 'averageRating' => $averageRating, 'url' => $url, 'genrePercentages' => $genrePercentages));
 
 include 'Presentation/footer.php';

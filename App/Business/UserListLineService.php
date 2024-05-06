@@ -72,6 +72,42 @@ class UserListLineService
     return round($averageRating * 2, 1) / 2;
   }
 
+  public function calcGenrePercentages(int $userId): array
+  {
+    $allLines = $this->getListLinesForUser($userId);
+    $genreService = new GenreService();
+    $filmService = new FilmService();
+    $allGenres = $genreService->getAllGenres();
+    $allFilms = array();
+    foreach ($allLines as $line) {
+      $film = $filmService->getFilm($line->getFilmId());
+      array_push($allFilms, $film);
+    }
+    $genrePercentageList = array();
+    $total = count($allLines);
+
+    foreach ($allGenres as $genre) {
+      $count = 0;
+      foreach ($allFilms as $film) {
+        if ($film->getGenreId() == $genre->getId()) {
+          $count++;
+        }
+      }
+      array_push($genrePercentageList, ['genre' => $genre, 'percentage' => round($count / $total * 100, 2)]);
+    }
+
+    usort($genrePercentageList, function ($a, $b) {
+      if ($a['percentage'] > $b['percentage']) {
+        return -1;
+      } elseif ($a['percentage'] < $b['percentage']) {
+        return 1;
+      }
+      return 0;
+    });
+
+    return $genrePercentageList;
+  }
+
   public function createNewLine(int $userId, int $filmId, int $listTypeId, float|null $rating = null): void
   {
     if ($rating == null) {

@@ -22,5 +22,14 @@
 		<h2>Your stats</h2>
 		<p>Total watchtime: {{ totalTime }} minutes</p>
 		<p>average rating given to films: {{ averageRating }}/10</p>
+		<h4>Percentage of films per genre</h4>
+		<ul class="c-genrePercentages">
+			{% for genrePercentage in genrePercentages %}
+			<li>
+				<span>{{ genrePercentage.genre.name }}:</span>
+				<span> {{ genrePercentage.percentage }}%</span>
+			</li>
+			{% endfor %}
+		</ul>
 	</article>
 </section>

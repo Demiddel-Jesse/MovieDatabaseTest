@@ -139,3 +139,13 @@ table {
 		padding: 0 1rem;
 	}
 }
+
+.c-genrePercentages {
+	list-style: none;
+	padding: 0;
+
+	li {
+		display: flex;
+		justify-content: space-between;
+	}
+}
