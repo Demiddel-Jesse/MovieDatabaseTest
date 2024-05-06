@@ -5,6 +5,7 @@
 		<th>Your rating</th>
 		<th>list</th>
 		<th>link</th>
+		<th>remove</th>
 	</tr>
 	{% for line in lines %}
 	<tr>
@@ -23,6 +24,19 @@
 		</td>
 		<td>
 			<a href="detail.php?film={{ line.film.id }}"> link </a>
+		</td>
+		<td>
+			<form
+				action="{{ url }}"
+				method="post">
+				<input
+					type="number"
+					name="filmId"
+					id="filmId"
+					value="{{ line.film.id }}"
+					hidden />
+				<button type="submit">remove</button>
+			</form>
 		</td>
 	</tr>
 	{% endfor %}

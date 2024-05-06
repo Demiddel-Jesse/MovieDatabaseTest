@@ -29,6 +29,10 @@ if (isset($_SESSION['admin'])) {
 
 // print_r($user);
 
+if (isset($_GET['action']) && $_GET['action'] == 'remove') {
+  $userListLineService->removeLine($user->getId(), intval($_POST['filmId']));
+}
+
 $listTypes = $listTypeService->getAllListTypes();
 $listLinesForUser = $userListLineService->getListLinesForUser($user->getId());
 
@@ -42,6 +46,7 @@ if ($listLinesForUser == null) {
 }
 $userListsLines = array();
 $totalTime = 0;
+$url = basename($_SERVER['REQUEST_URI']) . '&action=remove';
 
 foreach ($listLinesForUser as $listLine) {
   $film = $filmService->getFilm($listLine->getFilmId());
@@ -54,6 +59,6 @@ foreach ($listLinesForUser as $listLine) {
 
 include 'Presentation/header.php';
 
-echo $twig->render('userDashboard.twig', array('listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'totalTime' => $totalTime, 'averageRating' => $averageRating));
+echo $twig->render('userDashboard.twig', array('listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'totalTime' => $totalTime, 'averageRating' => $averageRating, 'url' => $url));
 
 include 'Presentation/footer.php';
