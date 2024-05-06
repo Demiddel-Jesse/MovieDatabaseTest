@@ -1,4 +1,3 @@
 !merge after each of these todos to main
 
-TODO: fancify most pages a bit
 TODO: maybe try to add actors
