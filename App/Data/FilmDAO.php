@@ -241,4 +241,29 @@ class FilmDAO
     $stmt->bindValue(':film', $film);
     $stmt->execute();
   }
+
+  public function searchFilms(string $searchString): ?array
+  {
+    $sql = 'SELECT * FROM `Films` WHERE `title` LIKE :searchString ORDER BY `sortTitle` ASC';
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindValue(':searchString', '%' . $searchString . '%');
+    $stmt->execute();
+
+    $filmsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() > 0) {
+      $films = array();
+      foreach ($filmsData as $filmData) {
+        $dateTime = null;
+        if ($filmData['releaseDate'] != null) {
+          $dateTime = new DateTime($filmData['releaseDate']);
+        }
+        $film = new Film($filmData['id'], $filmData['title'], $filmData['ratingId'], $filmData['description'], $filmData['runtime'], $dateTime, $filmData['coverImage'], $filmData['genreId'], $filmData['categoryId'], $filmData['sortTitle']);
+
+        array_push($films, $film);
+      }
+      return $films;
+    } else {
+      return null;
+    }
+  }
 }

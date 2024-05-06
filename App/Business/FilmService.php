@@ -55,4 +55,9 @@ class FilmService
   {
     $this->dao->removeFilm($film);
   }
+
+  public function searchFilms(string $searchString): ?array
+  {
+    return $this->dao->searchFilms($searchString);
+  }
 }
