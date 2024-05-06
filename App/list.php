@@ -27,6 +27,10 @@ if (isset($_SESSION['admin'])) {
   $user = unserialize($_SESSION['user']);
 }
 
+if (isset($_GET['action']) && $_GET['action'] == 'remove') {
+  $userListLineService->removeLine($user->getId(), intval($_POST['filmId']));
+}
+
 // print_r($user);
 
 if (isset($_GET['film'])) {
@@ -46,11 +50,12 @@ if (isset($_GET['film'])) {
 if (isset($_GET['film'])) {
   $type = 'film';
 }
+$url = basename($_SERVER['REQUEST_URI']) . '&action=remove';
 
 include 'Presentation/header.php';
 
 if (isset($_GET['film'])) {
-  echo $twig->render('list.twig', array('listType' => $listType, 'listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'type' => $type));
+  echo $twig->render('list.twig', array('listType' => $listType, 'listTypes' => $listTypes, 'user' => $user, 'lines' => $userListsLines, 'type' => $type, 'url' => $url));
 }
 
 include 'Presentation/footer.php';
