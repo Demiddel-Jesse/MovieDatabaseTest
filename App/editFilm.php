@@ -38,7 +38,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
   $error .= 'geen film gegeven in url.<br>';
 }
 if (isset($_GET['action']) && $_GET['action'] == 'remove' && isset($_GET['film'])) {
+  $film = $filmService->getFilm(intval($_GET['film']));
+  $target_file = './img/' . str_replace(' ', '', $film->getTitle() . '.png');
+  if (file_exists($target_file)) {
+    unlink($target_file);
+  }
   $filmService->removeFilm(intval($_GET['film']));
+
   header('location: index.php');
   exit(0);
 } else if (isset($_GET['action']) && $_GET['action'] == 'remove') {

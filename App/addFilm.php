@@ -68,10 +68,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
       $error .= "File is not an image.";
       $uploadOk = 0;
     }
-    if (file_exists($target_file)) {
-      $error .= "Sorry, file already exists.";
-      $uploadOk = 0;
-    }
+
     if ($_FILES["image"]["size"] > 16000000) {
       $error .= "Sorry, your file is too large.";
       $uploadOk = 0;
