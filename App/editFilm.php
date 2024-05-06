@@ -32,6 +32,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
     $runtime = intval($_POST['runtime']);
   }
 
+  // comment code below
+
   $target_dir = "img/";
   $target_file = $target_dir . str_replace(' ', '', $_POST['title'] . '.png');
   if (!isset($_POST['imageNull'])) {
@@ -69,6 +71,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['film']))
     }
     $coverImagePath = '~/img/placeholder.jpg';
   }
+
+  // stop commenting code
 
   if ($error == '') {
     $filmService->updateFilm(intval($_GET['film']), $_POST['title'], $_POST['sortTitle'], $_POST['description'], $runtime, $_POST['releaseDate'], $coverImagePath, intval($_POST['genreId']), intval($_POST['categoryId']), null);
