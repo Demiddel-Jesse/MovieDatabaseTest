@@ -55,14 +55,54 @@ if (isset($_GET['action']) && $_GET['action'] == 'add') {
   } else {
     $description = $_POST['description'];
   }
-  if ($filmService->getFilm($title) != null) {
+  // All for file upload 
+  // cant get it to work because i need permissions for the directory for someone but cant find out who to give permissions
+  $coverImagePath = null;
+  /* 
+  if ($_FILES['image']['name'] != null) {
+    $target_dir = "img/";
+    $target_file = $target_dir . str_replace(' ', '', $_POST['title'] . '.png');
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+      $uploadOk = 1;
+    } else {
+      $error .= "File is not an image.";
+      $uploadOk = 0;
+    }
+    if (file_exists($target_file)) {
+      $error .= "Sorry, file already exists.";
+      $uploadOk = 0;
+    }
+    if ($_FILES["image"]["size"] > 16000000) {
+      $error .= "Sorry, your file is too large.";
+      $uploadOk = 0;
+    }
+    if ($uploadOk == 0) {
+      $error .= "Sorry, your file was not uploaded.";
+      // if everything is ok, try to upload file
+    } else {
+      if (move_uploaded_file($_FILES["image"]["tmp_name"], './' . $target_file)) {
+        $coverImagePath = '~/' . $target_file;
+      } else {
+        $error .= "Sorry, there was an error uploading your file.";
+      }
+    }
+  } else {
+    $coverImagePath = null;
+  }
+  */
+
+
+  if ($error == '' && $filmService->getFilm($title) != null) {
     if ($filmService->getFilm($title)->getReleaseDate() == new DateTime($releaseDate)) {
       $error .= 'Deze film bestaat al.<br>';
     }
   }
 
   if ($error == '') {
-    $filmService->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, null, $genreId, $categoryId, 2);
+    $filmService->createFilm($title, $sortTitle, $description, $runtime, $releaseDate, $coverImagePath, $genreId, $categoryId, 2);
   }
 }
 

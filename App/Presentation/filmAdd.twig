@@ -2,7 +2,8 @@
 
 <form
 	action="addFilm.php?action=add"
-	method="post">
+	method="post" 
+	enctype="multipart/form-data">
 	<label>
 		titel
 		<input
@@ -35,7 +36,7 @@
 			type="date"
 			name="releaseDate"
 			id="releaseDate"
-			value="" />
+			value="" required/>
 	</label>
   <br><br>
 	<label>
@@ -67,6 +68,13 @@
 			{% endfor %}
 		</select>
 	</label>
-  <br><br>
+  {# See addFilm.php for reason this part is commented
+	<br><br>
+	<label>
+		upload image
+		<input type="file" name="image" id="image">
+		max 16MB.
+	</label> #}
+	<br><br>
   <button type="submit">submit</button>
 </form>
