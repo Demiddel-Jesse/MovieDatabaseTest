@@ -78,7 +78,7 @@ class FilmDAO
 
   public function getAll(): array
   {
-    $sql = "SELECT * FROM 'Films' ORDER BY 'sortTitle' ASC";
+    $sql = "SELECT * FROM Films ORDER BY sortTitle ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
 
