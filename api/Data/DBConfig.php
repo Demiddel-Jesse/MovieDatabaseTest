@@ -22,7 +22,7 @@ class DBConfig
   }
 
   function getConnectionString():string{
-    return "host=" . $this->host . " port=" . $this->port . " dbname=" . $this->db;
+    return "pgsql:host=" . $this->host . " port=" . $this->port . " dbname=" . $this->db;
   }
 
   public function getUser () :string{
