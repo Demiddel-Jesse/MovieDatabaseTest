@@ -39,18 +39,14 @@ class CategoryDAO
 
   public function getById(int $id): ?Category
   {
-<<<<<<< HEAD
     $sql = 'SELECT * FROM "Categories" WHERE "id" = :id';
-=======
-    $sql = "SELECT * FROM 'Categories' WHERE 'id' = :id";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(":id", $id);
+    $stmt->bindValue(':id', $id);
     $stmt->execute();
     $categoryData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $copy = new Category($categoryData["id"], $categoryData["name"]);
+      $copy = new Category($categoryData['id'], $categoryData['name']);
       return $copy;
     }
     return null;
@@ -58,18 +54,14 @@ class CategoryDAO
 
   public function getByName(string $name): ?Category
   {
-<<<<<<< HEAD
     $sql = 'SELECT * FROM "Categories" WHERE "name" = :name';
-=======
-    $sql = "SELECT * FROM 'Categories' WHERE 'name' = :name";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(":name", $name);
+    $stmt->bindValue(':name', $name);
     $stmt->execute();
     $categoryData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $copy = new Category($categoryData["id"], $categoryData["name"]);
+      $copy = new Category($categoryData['id'], $categoryData['name']);
       return $copy;
     }
     return null;
@@ -77,11 +69,7 @@ class CategoryDAO
 
   public function getAll(): array
   {
-<<<<<<< HEAD
     $sql = 'SELECT * FROM "Categories"';
-=======
-    $sql = "SELECT * FROM 'Categories'";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $categoriesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -89,7 +77,7 @@ class CategoryDAO
     $categories = array();
 
     foreach ($categoriesData as $categoryData) {
-      array_push($categories, new Category($categoryData["id"], $categoryData["name"]));
+      array_push($categories, new Category($categoryData['id'], $categoryData['name']));
     }
 
     return $categories;
@@ -100,13 +88,9 @@ class CategoryDAO
     if ($this->getByName($name) != null) {
       throw new AlreadyExistException;
     } else {
-<<<<<<< HEAD
       $sql = 'INSERT INTO "Categories"("name") VALUES (:name)';
-=======
-      $sql = "INSERT INTO 'Categories'('name') VALUES (:name)";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
       $stmt = $this->pdo->prepare($sql);
-      $stmt->bindValue(":name", $name);
+      $stmt->bindValue(':name', $name);
       $stmt->execute();
     }
   }
@@ -114,27 +98,19 @@ class CategoryDAO
   {
     if (is_int($lookup)) {
       if ($this->getById($lookup) != null) {
-<<<<<<< HEAD
         $sql = 'UPDATE "Categories" SET "name" = :name WHERE "id" = :id';
-=======
-        $sql = "UPDATE 'Categories' SET 'name' = :name WHERE 'id' = :id";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $lookup);
-        $stmt->bindValue(":name", $name);
+        $stmt->bindValue(':id', $lookup);
+        $stmt->bindValue(':name', $name);
       } else {
         throw new DoesntExistException;
       }
     } else if (is_string($lookup)) {
       if ($this->getByName($lookup) != null) {
-<<<<<<< HEAD
         $sql = 'UPDATE "Categories" SET "name" = :name WHERE "name" = :lookupName';
-=======
-        $sql = "UPDATE 'Categories' SET 'name' = :name WHERE 'name' = :lookupName";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":lookupName", $lookup);
-        $stmt->bindValue(":name", $name);
+        $stmt->bindValue(':lookupName', $lookup);
+        $stmt->bindValue(':name', $name);
       } else {
         throw new DoesntExistException;
       }
@@ -149,25 +125,17 @@ class CategoryDAO
   {
     if (is_int($lookup)) {
       if ($this->getById($lookup) != null) {
-<<<<<<< HEAD
         $sql = 'DELETE FROM "Categories" WHERE "id" = :id';
-=======
-        $sql = "DELETE FROM 'Categories' WHERE 'id' = :id";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $lookup);
+        $stmt->bindValue(':id', $lookup);
       } else {
         throw new DoesntExistException;
       }
     } else if (is_string($lookup)) {
       if ($this->getByName($lookup) != null) {
-<<<<<<< HEAD
         $sql = 'DELETE FROM "Categories" WHERE "name" = :lookupName;';
-=======
-        $sql = "DELETE FROM 'Categories' WHERE 'name' = :lookupName;";
->>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":lookupName", $lookup);
+        $stmt->bindValue(':lookupName', $lookup);
       } else {
         throw new DoesntExistException;
       }
