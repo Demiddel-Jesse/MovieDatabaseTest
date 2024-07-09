@@ -15,10 +15,11 @@ class RatingDAO
 
   public function __construct()
   {
+    $dsn = "host=" . $_ENV['PG_HOST'] . " port=" . $_ENV['PG_PORT'] . " dbname=" . $_ENV['PG_DB'];
+    $user = $_ENV['PG_USER'];
+    $password = $_ENV['PG_PASSWORD'];
     $this->pdo = new PDO(
-      DBConfig::$DB_CONNSTRING,
-      DBConfig::$DB_USERNAME,
-      DBConfig::$DB_PASSWORD
+      $dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
   }
 
