@@ -38,7 +38,7 @@ class FilmDAO
 
   public function getById(int $id): ?Film
   {
-    $sql = 'SELECT * FROM `Films` WHERE `id` = :id;';
+    $sql = 'SELECT * FROM "Films" WHERE "id" = :id;';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -58,7 +58,7 @@ class FilmDAO
 
   public function getByTitle(string $title): ?Film
   {
-    $sql = 'SELECT * FROM `Films` WHERE `title` LIKE :title;';
+    $sql = 'SELECT * FROM "Films" WHERE "title" LIKE :title;';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':title', '%' . $title . '%');
     $stmt->execute();
@@ -78,7 +78,7 @@ class FilmDAO
 
   public function getAll(): array
   {
-    $sql = 'SELECT * FROM `Films` ORDER BY `sortTitle` ASC';
+    $sql = 'SELECT * FROM "Films" ORDER BY "sortTitle" ASC';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
 
@@ -99,7 +99,7 @@ class FilmDAO
 
   public function createFilm(string $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int $ratingId)
   {
-    $sql = 'INSERT INTO `Films`(`title`, `sortTitle`, `description`, `runtime`, `releaseDate`, `coverImage`, `genreId`, `categoryId`, `ratingId`) VALUES (:title,:sortTitle,:description,:runtime,:releaseDate,:coverImage,:genreId,:categoryId,:ratingId);';
+    $sql = 'INSERT INTO "Films"("title", "sortTitle", "description", "runtime", "releaseDate", "coverImage", "genreId", "categoryId", "ratingId") VALUES (:title,:sortTitle,:description,:runtime,:releaseDate,:coverImage,:genreId,:categoryId,:ratingId);';
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':title', $title);
@@ -121,68 +121,68 @@ class FilmDAO
 
   public function updateFilm(int|string $currentFilm, string|null $title, string|null $sortTitle, string|null $description, int|null $runtime, string|null $releaseDate, string|null $coverImage, int|null $genreId, int|null $categoryId, int|null $ratingId)
   {
-    $sql = 'UPDATE `Films` SET';
+    $sql = 'UPDATE "Films" SET';
     if ($title != null) {
-      $sql = $sql . '`title` = :title';
+      $sql = $sql . '"title" = :title';
     }
     if ($sortTitle != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`sortTitle` = :sortTitle';
+      $sql = $sql . '"sortTitle" = :sortTitle';
     } else if ($title != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`sortTitle` = :title';
+      $sql = $sql . '"sortTitle" = :title';
     }
     if ($description != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`description` = :description';
+      $sql = $sql . '"description" = :description';
     }
     if ($runtime != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`runtime` = :runtime';
+      $sql = $sql . '"runtime" = :runtime';
     }
     if ($releaseDate != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`releaseDate` = :releaseDate';
+      $sql = $sql . '"releaseDate" = :releaseDate';
     }
     if ($coverImage != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`coverImage` = :coverImage';
+      $sql = $sql . '"coverImage" = :coverImage';
     }
     if ($genreId != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`genreId` = :genreId';
+      $sql = $sql . '"genreId" = :genreId';
     }
     if ($categoryId != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`categoryId` = :categoryId';
+      $sql = $sql . '"categoryId" = :categoryId';
     }
     if ($ratingId != null) {
-      if ($sql !== 'UPDATE `Films` SET') {
+      if ($sql !== 'UPDATE "Films" SET') {
         $sql = $sql . ', ';
       }
-      $sql = $sql . '`ratingId` = :ratingId';
+      $sql = $sql . '"ratingId" = :ratingId';
     }
 
     if (is_int($currentFilm)) {
-      $sql = $sql . ' WHERE `id` = :currentFilm';
+      $sql = $sql . ' WHERE "id" = :currentFilm';
     } else if (is_string($currentFilm)) {
-      $sql = $sql . ' WHERE `title` = :currentFilm';
+      $sql = $sql . ' WHERE "title" = :currentFilm';
     } else {
       throw new InvalidTypeException;
     }
@@ -227,12 +227,12 @@ class FilmDAO
       if ($this->getById($film) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'DELETE FROM `Films` WHERE `id` = :film';
+      $sql = 'DELETE FROM "Films" WHERE "id" = :film';
     } else if (is_string($film)) {
       if ($this->getByTitle($film) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'DELETE FROM `Films` WHERE `title` = :film';
+      $sql = 'DELETE FROM "Films" WHERE "title" = :film';
     } else {
       throw new InvalidTypeException;
     }
@@ -244,7 +244,7 @@ class FilmDAO
 
   public function searchFilms(string $searchString): ?array
   {
-    $sql = 'SELECT * FROM `Films` WHERE `title` LIKE :searchString ORDER BY `sortTitle` ASC';
+    $sql = 'SELECT * FROM "Films" WHERE "title" LIKE :searchString ORDER BY "sortTitle" ASC';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':searchString', '%' . $searchString . '%');
     $stmt->execute();

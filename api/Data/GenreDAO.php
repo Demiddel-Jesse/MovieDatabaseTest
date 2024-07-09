@@ -39,7 +39,7 @@ class GenreDAO
 
   public function getById(int $id): ?Genre
   {
-    $sql = 'SELECT * FROM `Genres` WHERE `id` = :id';
+    $sql = 'SELECT * FROM "Genres" WHERE "id" = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -54,7 +54,7 @@ class GenreDAO
 
   public function getByName(string $name): ?Genre
   {
-    $sql = 'SELECT * FROM `Genres` WHERE `name` = :name';
+    $sql = 'SELECT * FROM "Genres" WHERE "name" = :name';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':name', $name);
     $stmt->execute();
@@ -69,7 +69,7 @@ class GenreDAO
 
   public function getAll(): array
   {
-    $sql = 'SELECT * FROM `Genres`';
+    $sql = 'SELECT * FROM "Genres"';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $genresData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +88,7 @@ class GenreDAO
     if ($this->getByName($name) != null) {
       throw new AlreadyExistException;
     } else {
-      $sql = 'INSERT INTO `Genres`(`name`) VALUES (:name)';
+      $sql = 'INSERT INTO "Genres"("name") VALUES (:name)';
       $stmt = $this->pdo->prepare($sql);
       $stmt->bindValue(':name', $name);
       $stmt->execute();
@@ -101,12 +101,12 @@ class GenreDAO
       if ($this->getById($genre) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'UPDATE `Genres` SET `name` = :newName WHERE `id` = :genre';
+      $sql = 'UPDATE "Genres" SET "name" = :newName WHERE "id" = :genre';
     } else if (is_string($genre)) {
       if ($this->getByName($genre) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'UPDATE `Genres` SET `name` = :newName WHERE `name` = :genre';
+      $sql = 'UPDATE "Genres" SET "name" = :newName WHERE "name" = :genre';
     } else {
       throw new InvalidTypeException;
     }
@@ -122,12 +122,12 @@ class GenreDAO
       if ($this->getById($genre) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'DELETE FROM `Genres` WHERE `id` = :genre';
+      $sql = 'DELETE FROM "Genres" WHERE "id" = :genre';
     } else if (is_string($genre)) {
       if ($this->getByName($genre) == null) {
         throw new DoesntExistException;
       }
-      $sql = 'DELETE FROM `Genres` WHERE `name` = :genre';
+      $sql = 'DELETE FROM "Genres" WHERE "name" = :genre';
     } else {
       throw new InvalidTypeException;
     }

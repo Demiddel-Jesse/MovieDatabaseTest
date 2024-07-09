@@ -37,7 +37,7 @@ class DirectorsFilmsLinesDAO
 
   public function getById(int $id): ?DirectorsFilmsLine
   {
-    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `id` = :id';
+    $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "id" = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -51,7 +51,7 @@ class DirectorsFilmsLinesDAO
 
   public function getAllForDirectorId(int $directorId): array
   {
-    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `DirectorId` = :directorId';
+    $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "DirectorId" = :directorId';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':directorId', $directorId);
     $stmt->execute();
@@ -67,7 +67,7 @@ class DirectorsFilmsLinesDAO
 
   public function getAllForFilmId(int $filmId): array
   {
-    $sql = 'SELECT * FROM `DirectorsFilmsLines` WHERE `FilmId` = :filmId';
+    $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "FilmId" = :filmId';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':filmId', $filmId);
 
@@ -84,7 +84,7 @@ class DirectorsFilmsLinesDAO
 
   public function createNewDirectorFilmLine(int $directorId, int $filmId)
   {
-    $sql = 'INSERT INTO `DirectorsFilmsLines` (`DirectorId`,`FilmId`) VALUES (:directorId, :filmId)';
+    $sql = 'INSERT INTO "DirectorsFilmsLines" ("DirectorId","FilmId") VALUES (:directorId, :filmId)';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':filmId', $filmId);
     $stmt->bindValue(':directorId', $directorId);
@@ -93,7 +93,7 @@ class DirectorsFilmsLinesDAO
 
   public function removeDirectorFilmLine(int $id)
   {
-    $sql = 'DELETE FROM `DirectorsFilmsLines` WHERE `id` = :id';
+    $sql = 'DELETE FROM "DirectorsFilmsLines" WHERE "id" = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();

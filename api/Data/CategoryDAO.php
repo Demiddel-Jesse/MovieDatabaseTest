@@ -39,7 +39,7 @@ class CategoryDAO
 
   public function getById(int $id): ?Category
   {
-    $sql = 'SELECT * FROM `Categories` WHERE `id` = :id';
+    $sql = 'SELECT * FROM "Categories" WHERE "id" = :id';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
@@ -54,7 +54,7 @@ class CategoryDAO
 
   public function getByName(string $name): ?Category
   {
-    $sql = 'SELECT * FROM `Categories` WHERE `name` = :name';
+    $sql = 'SELECT * FROM "Categories" WHERE "name" = :name';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':name', $name);
     $stmt->execute();
@@ -69,7 +69,7 @@ class CategoryDAO
 
   public function getAll(): array
   {
-    $sql = 'SELECT * FROM `Categories`';
+    $sql = 'SELECT * FROM "Categories"';
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $categoriesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +88,7 @@ class CategoryDAO
     if ($this->getByName($name) != null) {
       throw new AlreadyExistException;
     } else {
-      $sql = 'INSERT INTO `Categories`(`name`) VALUES (:name)';
+      $sql = 'INSERT INTO "Categories"("name") VALUES (:name)';
       $stmt = $this->pdo->prepare($sql);
       $stmt->bindValue(':name', $name);
       $stmt->execute();
@@ -98,7 +98,7 @@ class CategoryDAO
   {
     if (is_int($lookup)) {
       if ($this->getById($lookup) != null) {
-        $sql = 'UPDATE `Categories` SET `name` = :name WHERE `id` = :id';
+        $sql = 'UPDATE "Categories" SET "name" = :name WHERE "id" = :id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $lookup);
         $stmt->bindValue(':name', $name);
@@ -107,7 +107,7 @@ class CategoryDAO
       }
     } else if (is_string($lookup)) {
       if ($this->getByName($lookup) != null) {
-        $sql = 'UPDATE `Categories` SET `name` = :name WHERE `name` = :lookupName';
+        $sql = 'UPDATE "Categories" SET "name" = :name WHERE "name" = :lookupName';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':lookupName', $lookup);
         $stmt->bindValue(':name', $name);
@@ -125,7 +125,7 @@ class CategoryDAO
   {
     if (is_int($lookup)) {
       if ($this->getById($lookup) != null) {
-        $sql = 'DELETE FROM `Categories` WHERE `id` = :id';
+        $sql = 'DELETE FROM "Categories" WHERE "id" = :id';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $lookup);
       } else {
@@ -133,7 +133,7 @@ class CategoryDAO
       }
     } else if (is_string($lookup)) {
       if ($this->getByName($lookup) != null) {
-        $sql = 'DELETE FROM `Categories` WHERE `name` = :lookupName;';
+        $sql = 'DELETE FROM "Categories" WHERE "name" = :lookupName;';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':lookupName', $lookup);
       } else {
