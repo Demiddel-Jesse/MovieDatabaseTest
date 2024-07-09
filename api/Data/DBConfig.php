@@ -5,8 +5,31 @@ namespace api\Data;
 
 class DBConfig
 {
-  function getConnectionString():string{
-    return "host=" . $_ENV['PG_HOST'] . " port=" . $_ENV['PG_PORT'] . " dbname=" . $_ENV['PG_DB'] . " user=" . $_ENV['PG_USER'] . " password=" . $_ENV['PG_PASSWORD'] . " options='endpoint=" . $_ENV['PG_ENDPOINT'] . "' sslmode=require";
+  public $url;
+  public $port;
+  public $user;
+  public $password;
+  public $host;
+  public $db;
 
+  public function __construct() {
+    $this->url = $_ENV['POSTGRES_URL'];
+    $this->port = 5432;
+    $this->user = $_ENV['POSTGRES_USER'];
+    $this->password = $_ENV['POSTGRES_PASSWORD'];
+    $this->host = $_ENV['POSTGRES_HOST'];
+    $this->db = $_ENV['POSTGRES_DATABASE'];
+  }
+
+  function getConnectionString():string{
+    return "host=" . $this->host . " port=" . $this->port . " dbname=" . $this->db;
+  }
+
+  public function getUser () :string{
+    return $this->user;
+  }
+
+  public function getPassword () :string{
+    return $this->password;
   }
 }

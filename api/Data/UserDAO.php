@@ -15,11 +15,10 @@ class UserDAO
 
   public function __construct()
   {
-    $dsn = "host=" . $_ENV['PG_HOST'] . " port=" . $_ENV['PG_PORT'] . " dbname=" . $_ENV['PG_DB'];
-    $user = $_ENV['PG_USER'];
-    $password = $_ENV['PG_PASSWORD'];
+    $dbConfig = new DBConfig();
+
     $this->pdo = new PDO(
-      $dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+      $dbConfig->getConnectionString(), $dbConfig->getUser(), $dbConfig->getPassword(), [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
   }
 
