@@ -39,14 +39,18 @@ class GenreDAO
 
   public function getById(int $id): ?Genre
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Genres" WHERE "id" = :id';
+=======
+    $sql = "SELECT * FROM 'Genres' WHERE 'id' = :id";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(":id", $id);
     $stmt->execute();
     $genreData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $copy = new Genre($genreData['id'], $genreData['name']);
+      $copy = new Genre($genreData["id"], $genreData["name"]);
       return $copy;
     }
     return null;
@@ -54,14 +58,18 @@ class GenreDAO
 
   public function getByName(string $name): ?Genre
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Genres" WHERE "name" = :name';
+=======
+    $sql = "SELECT * FROM 'Genres' WHERE 'name' = :name";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(":name", $name);
     $stmt->execute();
     $genreData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $copy = new Genre($genreData['id'], $genreData['name']);
+      $copy = new Genre($genreData["id"], $genreData["name"]);
       return $copy;
     }
     return null;
@@ -69,7 +77,11 @@ class GenreDAO
 
   public function getAll(): array
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Genres"';
+=======
+    $sql = "SELECT * FROM 'Genres'";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $genresData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -77,7 +89,7 @@ class GenreDAO
     $genres = array();
 
     foreach ($genresData as $genreData) {
-      array_push($genres, new Genre($genreData['id'], $genreData['name']));
+      array_push($genres, new Genre($genreData["id"], $genreData["name"]));
     }
 
     return $genres;
@@ -88,9 +100,13 @@ class GenreDAO
     if ($this->getByName($name) != null) {
       throw new AlreadyExistException;
     } else {
+<<<<<<< HEAD
       $sql = 'INSERT INTO "Genres"("name") VALUES (:name)';
+=======
+      $sql = "INSERT INTO 'Genres'('name') VALUES (:name)";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
       $stmt = $this->pdo->prepare($sql);
-      $stmt->bindValue(':name', $name);
+      $stmt->bindValue(":name", $name);
       $stmt->execute();
     }
   }
@@ -101,18 +117,26 @@ class GenreDAO
       if ($this->getById($genre) == null) {
         throw new DoesntExistException;
       }
+<<<<<<< HEAD
       $sql = 'UPDATE "Genres" SET "name" = :newName WHERE "id" = :genre';
+=======
+      $sql = "UPDATE 'Genres' SET 'name' = :newName WHERE 'id' = :genre";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else if (is_string($genre)) {
       if ($this->getByName($genre) == null) {
         throw new DoesntExistException;
       }
+<<<<<<< HEAD
       $sql = 'UPDATE "Genres" SET "name" = :newName WHERE "name" = :genre';
+=======
+      $sql = "UPDATE 'Genres' SET 'name' = :newName WHERE 'name' = :genre";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else {
       throw new InvalidTypeException;
     }
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':genre', $genre);
-    $stmt->bindValue(':newName', $newName);
+    $stmt->bindValue(":genre", $genre);
+    $stmt->bindValue(":newName", $newName);
     $stmt->execute();
   }
 
@@ -122,18 +146,26 @@ class GenreDAO
       if ($this->getById($genre) == null) {
         throw new DoesntExistException;
       }
+<<<<<<< HEAD
       $sql = 'DELETE FROM "Genres" WHERE "id" = :genre';
+=======
+      $sql = "DELETE FROM 'Genres' WHERE 'id' = :genre";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else if (is_string($genre)) {
       if ($this->getByName($genre) == null) {
         throw new DoesntExistException;
       }
+<<<<<<< HEAD
       $sql = 'DELETE FROM "Genres" WHERE "name" = :genre';
+=======
+      $sql = "DELETE FROM 'Genres' WHERE 'name' = :genre";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else {
       throw new InvalidTypeException;
     }
 
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':genre', $genre);
+    $stmt->bindValue(":genre", $genre);
     $stmt->execute();
   }
 }

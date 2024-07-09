@@ -37,13 +37,17 @@ class DirectorsFilmsLinesDAO
 
   public function getById(int $id): ?DirectorsFilmsLine
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "id" = :id';
+=======
+    $sql = "SELECT * FROM 'DirectorsFilmsLines' WHERE 'id' = :id";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(":id", $id);
     $stmt->execute();
     $data = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($stmt->rowCount() > 0) {
-      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      $line = new DirectorsFilmsLine($data["id"], $data["DirectorId"], $data["FilmId"]);
       return $line;
     }
     return null;
@@ -51,15 +55,19 @@ class DirectorsFilmsLinesDAO
 
   public function getAllForDirectorId(int $directorId): array
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "DirectorId" = :directorId';
+=======
+    $sql = "SELECT * FROM 'DirectorsFilmsLines' WHERE 'DirectorId' = :directorId";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':directorId', $directorId);
+    $stmt->bindValue(":directorId", $directorId);
     $stmt->execute();
     $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $lines = array();
     foreach ($datas as $data) {
-      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      $line = new DirectorsFilmsLine($data["id"], $data["DirectorId"], $data["FilmId"]);
       array_push($lines, $line);
     }
     return $lines;
@@ -67,16 +75,20 @@ class DirectorsFilmsLinesDAO
 
   public function getAllForFilmId(int $filmId): array
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "DirectorsFilmsLines" WHERE "FilmId" = :filmId';
+=======
+    $sql = "SELECT * FROM 'DirectorsFilmsLines' WHERE 'FilmId' = :filmId";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':filmId', $filmId);
+    $stmt->bindValue(":filmId", $filmId);
 
     $stmt->execute();
     $datas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $lines = array();
     foreach ($datas as $data) {
-      $line = new DirectorsFilmsLine($data['id'], $data['DirectorId'], $data['FilmId']);
+      $line = new DirectorsFilmsLine($data["id"], $data["DirectorId"], $data["FilmId"]);
       array_push($lines, $line);
     }
     return $lines;
@@ -84,18 +96,26 @@ class DirectorsFilmsLinesDAO
 
   public function createNewDirectorFilmLine(int $directorId, int $filmId)
   {
+<<<<<<< HEAD
     $sql = 'INSERT INTO "DirectorsFilmsLines" ("DirectorId","FilmId") VALUES (:directorId, :filmId)';
+=======
+    $sql = "INSERT INTO 'DirectorsFilmsLines' ('DirectorId','FilmId') VALUES (:directorId, :filmId)";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':filmId', $filmId);
-    $stmt->bindValue(':directorId', $directorId);
+    $stmt->bindValue(":filmId", $filmId);
+    $stmt->bindValue(":directorId", $directorId);
     $stmt->execute();
   }
 
   public function removeDirectorFilmLine(int $id)
   {
+<<<<<<< HEAD
     $sql = 'DELETE FROM "DirectorsFilmsLines" WHERE "id" = :id';
+=======
+    $sql = "DELETE FROM 'DirectorsFilmsLines' WHERE 'id' = :id";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(":id", $id);
     $stmt->execute();
   }
 }

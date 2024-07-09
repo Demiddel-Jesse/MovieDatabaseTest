@@ -37,14 +37,18 @@ class RatingDAO
 
   public function getById(int $id): ?Rating
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Ratings" WHERE "id" = :id';
+=======
+    $sql = "SELECT * FROM 'Ratings' WHERE 'id' = :id";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':id', $id);
+    $stmt->bindValue(":id", $id);
     $stmt->execute();
     $ratingData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $rating = new Rating($ratingData['id'], $ratingData['name'], $ratingData['description']);
+      $rating = new Rating($ratingData["id"], $ratingData["name"], $ratingData["description"]);
       return $rating;
     }
     return null;
@@ -52,14 +56,18 @@ class RatingDAO
 
   public function getByName(string $name): ?Rating
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Ratings" WHERE "name" = :name';
+=======
+    $sql = "SELECT * FROM 'Ratings' WHERE 'name' = :name";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(":name", $name);
     $stmt->execute();
     $ratingData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($stmt->rowCount() > 0) {
-      $rating = new Rating($ratingData['id'], $ratingData['name'], $ratingData['description']);
+      $rating = new Rating($ratingData["id"], $ratingData["name"], $ratingData["description"]);
       return $rating;
     }
     return null;
@@ -67,7 +75,11 @@ class RatingDAO
 
   public function getAll(): array
   {
+<<<<<<< HEAD
     $sql = 'SELECT * FROM "Ratings" ORDER BY "id" ASC';
+=======
+    $sql = "SELECT * FROM 'Ratings' ORDER BY 'id' ASC";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $ratingsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -75,7 +87,7 @@ class RatingDAO
     $ratings = array();
 
     foreach ($ratingsData as $ratingData) {
-      array_push($ratings, new Rating($ratingData['id'], $ratingData['name'], $ratingData['description']));
+      array_push($ratings, new Rating($ratingData["id"], $ratingData["name"], $ratingData["description"]));
     }
 
     return $ratings;
@@ -84,21 +96,28 @@ class RatingDAO
   public function createRating(string $name, string|null $description = null): void
   {
     if ($description != null) {
+<<<<<<< HEAD
       $sql = 'INSERT INTO "Ratings"("name", "description") VALUES (:name,:description)';
     } else {
       $sql = 'INSERT INTO "Ratings"("name") VALUES (:name)';
+=======
+      $sql = "INSERT INTO 'Ratings'('name', 'description') VALUES (:name,:description)";
+    } else {
+      $sql = "INSERT INTO 'Ratings'('name') VALUES (:name)";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     }
 
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(":name", $name);
     if ($description != null) {
-      $stmt->bindValue(':description', $description);
+      $stmt->bindValue(":description", $description);
     }
     $stmt->execute();
   }
 
   public function updateRating(string|int $currentRating, string|null $newName, string|null $description = null): void
   {
+<<<<<<< HEAD
     $sql = 'UPDATE "Ratings" SET';
     if ($newName != null) {
       $sql = $sql . '"name" = :name';
@@ -114,6 +133,23 @@ class RatingDAO
       $sql = $sql . ' WHERE "id" = :currentRating ;';
     } else if (is_string($currentRating)) {
       $sql = $sql . ' WHERE "name"= :currentRating ;';
+=======
+    $sql = "UPDATE 'Ratings' SET";
+    if ($newName != null) {
+      $sql = $sql . "'name' = :name";
+    }
+    if ($description != null) {
+      if ($sql !== "UPDATE 'Ratings' SET") {
+        $sql = $sql . ", ";
+      }
+      $sql = $sql . " 'description' = :description";
+    }
+
+    if (is_int($currentRating)) {
+      $sql = $sql . " WHERE 'id' = :currentRating ;";
+    } else if (is_string($currentRating)) {
+      $sql = $sql . " WHERE 'name'= :currentRating ;";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else {
       throw new InvalidTypeException;
     }
@@ -121,28 +157,36 @@ class RatingDAO
     $stmt = $this->pdo->prepare($sql);
 
     if ($newName != null) {
-      $stmt->bindValue(':name', $newName);
+      $stmt->bindValue(":name", $newName);
     }
     if ($description != null) {
-      $stmt->bindValue(':description', $description);
+      $stmt->bindValue(":description", $description);
     }
 
-    $stmt->bindValue(':currentRating', $currentRating);
+    $stmt->bindValue(":currentRating", $currentRating);
     $stmt->execute();
   }
 
   public function removeRating(string|int $rating): void
   {
+<<<<<<< HEAD
     $sql = 'DELETE FROM "Ratings" WHERE';
     if (is_int($rating)) {
       $sql = $sql . ' "id" = :rating ;';
     } else if (is_string($rating)) {
       $sql = $sql . ' "name"= :rating ;';
+=======
+    $sql = "DELETE FROM 'Ratings' WHERE";
+    if (is_int($rating)) {
+      $sql = $sql . " 'id' = :rating ;";
+    } else if (is_string($rating)) {
+      $sql = $sql . " 'name'= :rating ;";
+>>>>>>> 5d49a6cf0977f58cc23f956c486014b10f62afa2
     } else {
       throw new InvalidTypeException;
     }
     $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(':rating', $rating);
+    $stmt->bindValue(":rating", $rating);
     $stmt->execute();
   }
 }
