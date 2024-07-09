@@ -36,7 +36,7 @@ class ListTypeDAO
 
   public function getById(int $id): ?ListType
   {
-    $sql = "SELECT * FROM `ListTypes` WHERE `id` = :id";
+    $sql = "SELECT * FROM 'ListTypes' WHERE 'id' = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
@@ -51,7 +51,7 @@ class ListTypeDAO
 
   public function getByName(string $name): ?ListType
   {
-    $sql = "SELECT * FROM `ListTypes` WHERE `name` = :name";
+    $sql = "SELECT * FROM 'ListTypes' WHERE 'name' = :name";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":name", $name);
     $stmt->execute();
@@ -66,7 +66,7 @@ class ListTypeDAO
 
   public function getAll(): array
   {
-    $sql = "SELECT * FROM `ListTypes` ORDER BY `name` ASC";
+    $sql = "SELECT * FROM 'ListTypes' ORDER BY 'name' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $listTypesData = $stmt->fetchAll(PDO::FETCH_ASSOC);

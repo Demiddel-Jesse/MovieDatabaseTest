@@ -36,7 +36,7 @@ class UserListsLineDAO
 
   public function getById(int $id): ?UserListsLine
   {
-    $sql = "SELECT * FROM `UserListsLines` WHERE `id` = :id";
+    $sql = "SELECT * FROM 'UserListsLines' WHERE 'id' = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
@@ -51,7 +51,7 @@ class UserListsLineDAO
 
   public function getByUserAndFilmId(int $userId, int $filmId): ?UserListsLine
   {
-    $sql = "SELECT * FROM `UserListsLines` WHERE `UserId` = :userId AND `FilmId`  = :filmId";
+    $sql = "SELECT * FROM 'UserListsLines' WHERE 'UserId' = :userId AND 'FilmId'  = :filmId";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
@@ -68,7 +68,7 @@ class UserListsLineDAO
 
   public function getAll(): array
   {
-    $sql = "SELECT * FROM `UserListsLines` ORDER BY `id` ASC";
+    $sql = "SELECT * FROM 'UserListsLines' ORDER BY 'id' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $userListLinesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -84,7 +84,7 @@ class UserListsLineDAO
 
   public function getAllForUserId(int $userId): array
   {
-    $sql = "SELECT * FROM `UserListsLines` WHERE `UserId` = :userId ORDER BY `id` ASC";
+    $sql = "SELECT * FROM 'UserListsLines' WHERE 'UserId' = :userId ORDER BY 'id' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
     $stmt->execute();
@@ -101,7 +101,7 @@ class UserListsLineDAO
 
   public function getAllForUserIdAndListId(int $userId, int $listId): array
   {
-    $sql = "SELECT * FROM `UserListsLines` WHERE `UserId` = :userId AND `ListTypesId` = :listId ORDER BY `id` ASC";
+    $sql = "SELECT * FROM 'UserListsLines' WHERE 'UserId' = :userId AND 'ListTypesId' = :listId ORDER BY 'id' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
     $stmt->bindValue(":listId", $listId);
@@ -119,7 +119,7 @@ class UserListsLineDAO
 
   public function getAllForFilmId(int $filmId): array
   {
-    $sql = "SELECT * FROM `UserListsLines` WHERE `FilmId` = :filmId ORDER BY `id` ASC";
+    $sql = "SELECT * FROM 'UserListsLines' WHERE 'FilmId' = :filmId ORDER BY 'id' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":filmId", $filmId);
     $stmt->execute();
@@ -136,7 +136,7 @@ class UserListsLineDAO
 
   public function createNewUserListLine(int $userId, int $filmId, int $listTypeId, float $rating = null): void
   {
-    $sql = "INSERT INTO `UserListsLines`(`UserId`, `FilmId`, `rating`, `ListTypesId`) VALUES (:userId, :filmId, :rating, :listTypeId)";
+    $sql = "INSERT INTO 'UserListsLines'('UserId', 'FilmId', 'rating', 'ListTypesId') VALUES (:userId, :filmId, :rating, :listTypeId)";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
@@ -148,7 +148,7 @@ class UserListsLineDAO
 
   public function updateRating(int $userId, int $filmId, float $rating): void
   {
-    $sql = "UPDATE `UserListsLines` SET `rating` = :rating WHERE `UserId` = :userId AND `FilmId`  = :filmId";
+    $sql = "UPDATE 'UserListsLines' SET 'rating' = :rating WHERE 'UserId' = :userId AND 'FilmId'  = :filmId";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
@@ -159,7 +159,7 @@ class UserListsLineDAO
 
   public function updateListType(int $userId, int $filmId, int $listType): void
   {
-    $sql = "UPDATE `UserListsLines` SET `ListTypesId` = :listType WHERE `UserId` = :userId AND `FilmId`  = :filmId";
+    $sql = "UPDATE 'UserListsLines' SET 'ListTypesId' = :listType WHERE 'UserId' = :userId AND 'FilmId'  = :filmId";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);
@@ -170,7 +170,7 @@ class UserListsLineDAO
 
   public function removeLine(int $userId, int $filmId): void
   {
-    $sql = "DELETE FROM `UserListsLines` WHERE `UserId` = :userId AND `FilmId`  = :filmId";
+    $sql = "DELETE FROM 'UserListsLines' WHERE 'UserId' = :userId AND 'FilmId'  = :filmId";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":userId", $userId);

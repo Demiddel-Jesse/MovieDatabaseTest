@@ -36,7 +36,7 @@ class DirectorDAO
 
   public function getById(int $id): ?Director
   {
-    $sql = "SELECT * FROM `Directors` WHERE `id` = :id";
+    $sql = "SELECT * FROM 'Directors' WHERE 'id' = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
@@ -55,7 +55,7 @@ class DirectorDAO
   }
   public function getByName(string $firstName, string $lastName): ?Director
   {
-    $sql = "SELECT * FROM `Directors` WHERE `firstName` = :firstName AND `lastName` = :lastName";
+    $sql = "SELECT * FROM 'Directors' WHERE 'firstName' = :firstName AND 'lastName' = :lastName";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":firstName", $firstName);
     $stmt->bindValue(":lastName", $lastName);
@@ -75,7 +75,7 @@ class DirectorDAO
   }
   public function getAll(): array
   {
-    $sql = "SELECT * FROM `Directors` ORDER BY `lastName`, `firstName` ASC";
+    $sql = "SELECT * FROM 'Directors' ORDER BY 'lastName', 'firstName' ASC";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
 
@@ -101,7 +101,7 @@ class DirectorDAO
       $image = null;
     }
 
-    $sql = "INSERT INTO `Directors` (`firstName`, `lastName`, `image`) VALUES (:firstName, :lastName, :image)";
+    $sql = "INSERT INTO 'Directors' ('firstName', 'lastName', 'image') VALUES (:firstName, :lastName, :image)";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":firstName", $firstName);
     $stmt->bindValue(":lastName", $lastName);
@@ -117,25 +117,25 @@ class DirectorDAO
       $image = null;
     }
 
-    $sql = "UPDATE `Directors` SET";
+    $sql = "UPDATE 'Directors' SET";
 
     if ($firstName != null) {
-      $sql = $sql . " `firstName` = :firstName ";
+      $sql = $sql . " 'firstName' = :firstName ";
     }
     if ($lastName != null) {
-      if ($sql !== "UPDATE `Directors` SET") {
+      if ($sql !== "UPDATE 'Directors' SET") {
         $sql = $sql . ", ";
       }
-      $sql = $sql . " `lastName` = :lastName ";
+      $sql = $sql . " 'lastName' = :lastName ";
     }
     if ($image != null) {
-      if ($sql !== "UPDATE `Directors` SET") {
+      if ($sql !== "UPDATE 'Directors' SET") {
         $sql = $sql . ", ";
       }
-      $sql = $sql . " `image` = :image ";
+      $sql = $sql . " 'image' = :image ";
     }
 
-    $sql = $sql . "WHERE `id` = :id";
+    $sql = $sql . "WHERE 'id' = :id";
     $stmt = $this->pdo->prepare($sql);
 
     if ($firstName != null) {
@@ -155,7 +155,7 @@ class DirectorDAO
 
   public function removeDirector(int $id): void
   {
-    $sql = "DELETE FROM `Directors` WHERE `id` = :id";
+    $sql = "DELETE FROM 'Directors' WHERE 'id' = :id";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(":id", $id);
     $stmt->execute();
@@ -164,7 +164,7 @@ class DirectorDAO
   // this is how images should be got
   public function testGetImage()
   {
-    $sql = "SELECT `image` FROM `Directors` WHERE `id` = 2";
+    $sql = "SELECT 'image' FROM 'Directors' WHERE 'id' = 2";
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute();
     $return = $stmt->fetch(PDO::FETCH_ASSOC);
