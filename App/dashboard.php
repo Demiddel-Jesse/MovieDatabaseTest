@@ -46,7 +46,12 @@ if ($listLinesForUser == null) {
 }
 $userListsLines = array();
 $totalTime = 0;
-$url = basename($_SERVER['REQUEST_URI']) . '&action=remove';
+$url = basename($_SERVER['REQUEST_URI']);
+if($url == 'dashboard.php'){
+  $url .= '?action=remove';
+} else {
+  $url .= '&action=remove';
+}
 $genrePercentages = $userListLineService->calcGenrePercentages($user->getId());
 
 foreach ($listLinesForUser as $listLine) {
