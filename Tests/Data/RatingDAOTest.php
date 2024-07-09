@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Rating;
-use App\Data\RatingDAO;
+use api\Entities\Rating;
+use api\Data\RatingDAO;
 use PHPUnit\Framework\TestCase;
 
 class RatingDAOTest extends TestCase

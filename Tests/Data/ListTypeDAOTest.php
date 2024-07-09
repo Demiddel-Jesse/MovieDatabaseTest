@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\ListType;
-use App\Data\ListTypeDAO;
+use api\Entities\ListType;
+use api\Data\ListTypeDAO;
 use PHPUnit\Framework\TestCase;
 
 class ListTypeDAOTest extends TestCase

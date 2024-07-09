@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Category;
+use api\Entities\Category;
 use PHPUnit\Framework\TestCase;
 
 class CategoryTest extends TestCase

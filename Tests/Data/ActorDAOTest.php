@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Actor;
-use App\Data\ActorDAO;
+use api\Entities\Actor;
+use api\Data\ActorDAO;
 use PHPUnit\Framework\TestCase;
 
 class ActorDAOTest extends TestCase

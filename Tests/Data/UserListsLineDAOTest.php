@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\UserListsLine;
-use App\Data\UserListsLineDAO;
+use api\Entities\UserListsLine;
+use api\Data\UserListsLineDAO;
 use PHPUnit\Framework\TestCase;
 
 class UserListsLineDAOTest extends TestCase

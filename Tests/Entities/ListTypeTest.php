@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\ListType;
+use api\Entities\ListType;
 use PHPUnit\Framework\TestCase;
 
 class ListTypeTest extends TestCase

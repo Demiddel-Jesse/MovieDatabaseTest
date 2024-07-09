@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Rating;
+use api\Entities\Rating;
 use PHPUnit\Framework\TestCase;
 
 class RatingTest extends TestCase

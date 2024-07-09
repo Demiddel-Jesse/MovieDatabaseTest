@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\DirectorsFilmsLine;
-use App\Data\DirectorsFilmsLinesDAO;
+use api\Entities\DirectorsFilmsLine;
+use api\Data\DirectorsFilmsLinesDAO;
 use PHPUnit\Framework\TestCase;
 
 class DirectorsFilmsLinesDAOTest extends TestCase

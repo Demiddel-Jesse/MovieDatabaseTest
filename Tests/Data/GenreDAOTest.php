@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Genre;
-use App\Data\GenreDAO;
+use api\Entities\Genre;
+use api\Data\GenreDAO;
 use PHPUnit\Framework\TestCase;
 
 class GenreDAOTest extends TestCase

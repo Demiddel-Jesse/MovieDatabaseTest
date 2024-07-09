@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Genre;
+use api\Entities\Genre;
 use PHPUnit\Framework\TestCase;
 
 class GenreTest extends TestCase

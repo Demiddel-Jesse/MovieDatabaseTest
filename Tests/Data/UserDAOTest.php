@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Entities\User;
-use App\Data\UserDAO;
-use App\Exceptions\IsAdminUser;
+use api\Entities\User;
+use api\Data\UserDAO;
+use api\Exceptions\IsAdminUser;
 use PHPUnit\Framework\TestCase;
 
 class UserDAOTest extends TestCase

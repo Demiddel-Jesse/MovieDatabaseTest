@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Film;
-use App\Data\FilmDAO;
+use api\Entities\Film;
+use api\Data\FilmDAO;
 use PHPUnit\Framework\TestCase;
 
 class FilmDAOTest extends TestCase

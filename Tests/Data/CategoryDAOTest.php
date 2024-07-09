@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Category;
-use App\Data\CategoryDAO;
+use api\Entities\Category;
+use api\Data\CategoryDAO;
 use PHPUnit\Framework\TestCase;
 
 class CategoryDAOTest extends TestCase

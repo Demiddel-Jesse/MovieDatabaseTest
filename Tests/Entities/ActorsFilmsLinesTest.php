@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\ActorsFilmsLines;
+use api\Entities\ActorsFilmsLines;
 use PHPUnit\Framework\TestCase;
 
 class ActorsFilmsLinesTest extends TestCase

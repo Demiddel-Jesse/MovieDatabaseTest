@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Actor;
+use api\Entities\Actor;
 use PHPUnit\Framework\TestCase;
 
 class ActorTest extends TestCase

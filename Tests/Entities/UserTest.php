@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\User;
+use api\Entities\User;
 use PHPUnit\Framework\TestCase;
 
 class UserTest extends TestCase

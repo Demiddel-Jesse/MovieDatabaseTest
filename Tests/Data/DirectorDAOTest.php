@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Entities\Director;
-use App\Data\DirectorDAO;
+use api\Entities\Director;
+use api\Data\DirectorDAO;
 use PHPUnit\Framework\TestCase;
 
 class DirectorDAOTest extends TestCase

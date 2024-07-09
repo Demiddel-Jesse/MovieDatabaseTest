@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\UserListsLine;
+use api\Entities\UserListsLine;
 use PHPUnit\Framework\TestCase;
 
 class UserListsLineTest extends TestCase

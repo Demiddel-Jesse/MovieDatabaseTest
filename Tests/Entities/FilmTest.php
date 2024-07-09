@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Film;
+use api\Entities\Film;
 use PHPUnit\Framework\TestCase;
 
 class FilmTest extends TestCase

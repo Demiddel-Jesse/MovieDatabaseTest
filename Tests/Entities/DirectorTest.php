@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Entities\Director;
+use api\Entities\Director;
 use PHPUnit\Framework\TestCase;
 
 class DirectorTest extends TestCase
