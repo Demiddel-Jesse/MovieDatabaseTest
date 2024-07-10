@@ -31,9 +31,9 @@ if (isset($_GET['reason']) && $_GET['reason'] == 'none') {
 
 include 'Presentation/header.php';
 
-$di = new RecursiveDirectoryIterator('/');
+$di = new RecursiveDirectoryIterator('./');
 foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
-    echo $filename . ' - ' . $file->getSize() . ' bytes <br/>';
+    echo $filename . ' - ' . ' bytes <br/>';
 }
 
 if ($error != "") {
