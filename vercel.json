@@ -5,9 +5,13 @@
 		}
 	},
 	"routes": [
-		{ "src": "/(.*)", "dest": "/api/(.*).php" },
-		{ "src": "/css/style.css", "dest": "/api/css/style.css" },
-		{ "src": "/js/script.js", "dest": "/api/js/script.js" },
-		{ "src": "/img/*.png", "dest": "/api/img/*.png" }
+		{
+			"src": "/(css|js|img)/(.*)$",
+			"dest": "/api/assets.php?type=$1&file=$2"
+		},
+		{
+			"src": "/page\\.php(.*)",
+			"dest": "/api/index\\.php$1"
+		}
 	]
 }
