@@ -19,7 +19,7 @@ class Film
   private int|null $ratingId;
   private string|null $sortTitle;
 
-  public function __construct(int $id, string $title, int|null $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null, string|null $sortTitle)
+  public function __construct(int $id, string $title, int|null $ratingId, string|null $description = null, int|null $runtime = null, DateTime|null $releaseDate = null, string|null $coverImage = '~/img/placeholder.jpg', int|null $genreId = null, int|null $categoryId = null, string|null $sortTitle = null)
   {
     $this->id = $id;
     $this->title = $title;
