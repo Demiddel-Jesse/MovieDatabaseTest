@@ -10,8 +10,11 @@
 		{ "source": "/dashboard.php", "destination": "/api/dashboard.php" },
 		{ "source": "/register.php", "destination": "/api/register.php" },
 		{ "source": "/logout.php", "destination": "/api/logout.php" },
-		{ "source": "/detail.php", "destination": "/api/detail.php" },
-		{ "source": "/img/(*)", "destination": "/api/img/" },
+		{ "source": "/detail.php:detail", "destination": "/api/detail.php:detail" },
+		{
+			"source": "/img/((?!general).*)",
+			"destination": "/api/img/((?!general).*)"
+		},
 		{ "source": "/js/", "destination": "/api/js/" },
 		{ "source": "/css/", "destination": "/api/css/" }
 	]
