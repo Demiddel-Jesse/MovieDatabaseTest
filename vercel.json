@@ -6,12 +6,12 @@
 	},
 	"rewrites": [
 		{ "source": "/", "destination": "/api/index.php" },
-		{ "source": "/login", "destination": "/api/login.php" },
-		{ "source": "/dashboard", "destination": "/api/dashboard.php" },
-		{ "source": "/register", "destination": "/api/register.php" },
-		{ "source": "/logout", "destination": "/api/logout.php" },
-		{ "source": "/detail", "destination": "/api/detail.php" },
-		{ "source": "/img/", "destination": "/api/img/" },
+		{ "source": "/login.php", "destination": "/api/login.php" },
+		{ "source": "/dashboard.php", "destination": "/api/dashboard.php" },
+		{ "source": "/register.php", "destination": "/api/register.php" },
+		{ "source": "/logout.php", "destination": "/api/logout.php" },
+		{ "source": "/detail.php", "destination": "/api/detail.php" },
+		{ "source": "/img/(*)", "destination": "/api/img/" },
 		{ "source": "/js/", "destination": "/api/js/" },
 		{ "source": "/css/", "destination": "/api/css/" }
 	]
