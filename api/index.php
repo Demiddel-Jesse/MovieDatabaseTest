@@ -31,6 +31,11 @@ if (isset($_GET['reason']) && $_GET['reason'] == 'none') {
 
 include 'Presentation/header.php';
 
+$di = new RecursiveDirectoryIterator('path/to/directory');
+foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+    echo $filename . ' - ' . $file->getSize() . ' bytes <br/>';
+}
+
 if ($error != "") {
   echo "<span style=\"color:red;\">" . $error . "</span><br>";
 }
