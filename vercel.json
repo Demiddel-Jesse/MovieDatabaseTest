@@ -4,5 +4,10 @@
 			"runtime": "vercel-php@0.7.1"
 		}
 	},
-	"routes": [{ "src": "/(.*)", "dest": "/api/index.php" }]
+	"routes": [
+		{ "src": "/(.*)", "dest": "/api/index.php" },
+		{ "src": "/css/style.css", "dest": "/api/css/style.css" },
+		{ "src": "/js/script.js", "dest": "/api/js/script.js" },
+		{ "src": "/img/*.png", "dest": "/api/img/*.png" }
+	]
 }
