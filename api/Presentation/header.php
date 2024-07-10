@@ -9,8 +9,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Film bibliotheek</title>
-  <script src="./js/script.js" defer></script>
-  <link rel="stylesheet" href="css/index.css">
+  <script src="./api/js/script.js" defer></script>
+  <link rel="stylesheet" href="./api/css/index.css">
 </head>
 
 <body>
