@@ -1,3 +1,3 @@
 <?php
 
-require_once __DIR__ . '/../App/index.php';
+include __DIR__ . '/../App/index.php';
