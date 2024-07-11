@@ -56,6 +56,10 @@
 		{
 			"src": "/test(.*)",
 			"dest": "/api/test.php"
+		},
+		{
+			"src": "/index(.*)",
+			"dest": "/api/index.php"
 		}
 	]
 }
