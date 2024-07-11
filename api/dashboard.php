@@ -1,3 +1,3 @@
 <?php
 
-include '../App/dashboard.php';
+include __DIR__ . '../App/dashboard.php';

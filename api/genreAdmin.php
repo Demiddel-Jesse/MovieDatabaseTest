@@ -1,3 +1,3 @@
 <?php
 
-include '../App/genreAdmin.php';
+include __DIR__ . '../App/genreAdmin.php';

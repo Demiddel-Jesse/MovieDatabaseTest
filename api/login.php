@@ -1,3 +1,3 @@
 <?php
 
-include '../App/login.php';
+include __DIR__ . '../App/login.php';

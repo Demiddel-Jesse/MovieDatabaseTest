@@ -1,3 +1,3 @@
 <?php
 
-include '../App/categoryAdmin.php';
+include __DIR__ . '../App/categoryAdmin.php';
