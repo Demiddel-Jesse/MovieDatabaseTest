@@ -14,47 +14,47 @@
 			"dest": "/api/detail.php"
 		},
 		{
-			"src": "/addFilm",
+			"src": "/addFilm(.*)",
 			"dest": "/api/addFilm.php"
 		},
 		{
-			"src": "/ajax_userlists",
+			"src": "/ajax_userlists(.*)",
 			"dest": "/api/ajax_userlists.php"
 		},
 		{
-			"src": "/categoryAdmin",
+			"src": "/categoryAdmin(.*)",
 			"dest": "/api/categoryAdmin.php"
 		},
 		{
-			"src": "/dashboard",
+			"src": "/dashboard(.*)",
 			"dest": "/api/dashboard.php"
 		},
 		{
-			"src": "/editFilm",
+			"src": "/editFilm(.*)",
 			"dest": "/api/editFilm.php"
 		},
 		{
-			"src": "/genreAdmin",
+			"src": "/genreAdmin(.*)",
 			"dest": "/api/genreAdmin.php"
 		},
 		{
-			"src": "/list",
+			"src": "/list(.*)",
 			"dest": "/api/list.php"
 		},
 		{
-			"src": "/login",
+			"src": "/login(.*)",
 			"dest": "/api/login.php"
 		},
 		{
-			"src": "/logout",
+			"src": "/logout(.*)",
 			"dest": "/api/logout.php"
 		},
 		{
-			"src": "/register",
+			"src": "/register(.*)",
 			"dest": "/api/register.php"
 		},
 		{
-			"src": "/test",
+			"src": "/test(.*)",
 			"dest": "/api/test.php"
 		}
 	]
