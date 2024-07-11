@@ -8,6 +8,54 @@
 		{
 			"src": "/",
 			"dest": "/api/index.php"
+		},
+		{
+			"src": "/detail",
+			"dest": "/api/detail.php"
+		},
+		{
+			"src": "/addFilm",
+			"dest": "/api/addFilm.php"
+		},
+		{
+			"src": "/ajax_userlists",
+			"dest": "/api/ajax_userlists.php"
+		},
+		{
+			"src": "/categoryAdmin",
+			"dest": "/api/categoryAdmin.php"
+		},
+		{
+			"src": "/dashboard",
+			"dest": "/api/dashboard.php"
+		},
+		{
+			"src": "/editFilm",
+			"dest": "/api/editFilm.php"
+		},
+		{
+			"src": "/genreAdmin",
+			"dest": "/api/genreAdmin.php"
+		},
+		{
+			"src": "/list",
+			"dest": "/api/list.php"
+		},
+		{
+			"src": "/login",
+			"dest": "/api/login.php"
+		},
+		{
+			"src": "/logout",
+			"dest": "/api/logout.php"
+		},
+		{
+			"src": "/register",
+			"dest": "/api/register.php"
+		},
+		{
+			"src": "/test",
+			"dest": "/api/test.php"
 		}
 	]
 }
