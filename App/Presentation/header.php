@@ -9,8 +9,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Film bibliotheek</title>
-  <script src="<?php __DIR__ . '/App/js/script.js'?>" defer></script>
-  <link rel="stylesheet" href="<?php __DIR__ . '/App/css/index.css'?>">
+  <script src="<?php __DIR__ . '/js/script.js'?>" defer></script>
+  <link rel="stylesheet" href="<?php __DIR__ . '/css/index.css'?>">
 </head>
 <body>
   <nav class="c-nav">
