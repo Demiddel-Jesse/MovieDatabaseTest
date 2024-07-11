@@ -10,7 +10,7 @@
 			"dest": "/api/index.php"
 		},
 		{
-			"src": "/detail",
+			"src": "/detail(*.)",
 			"dest": "/api/detail.php"
 		},
 		{

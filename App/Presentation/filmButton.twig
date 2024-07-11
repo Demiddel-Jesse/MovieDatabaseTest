@@ -1,9 +1,9 @@
-<a
-	href="detail.php?film={{ film.id }}"
-	class="c-filmButton">
+<a href="detail.php?film={{ film.id }}" class="c-filmButton">
 	<img
 		src="{{ film.coverImage }}"
-		alt="{{ film.title }} Poster" />
+		alt="{{ film.title }} Poster"
+		onerror="this.src='/../img/placeholder.jpg'"
+	/>
 	<p>{{ film.title }}</p>
 	<p>{{ rating }}/10</p>
 </a>
