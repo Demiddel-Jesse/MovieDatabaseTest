@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\FilmDAO;
-use api\Business\UserListLineService;
-use api\Entities\Film;
-use api\Exceptions\InvalidTypeException;
+use App\Data\FilmDAO;
+use App\Business\UserListLineService;
+use App\Entities\Film;
+use App\Exceptions\InvalidTypeException;
 use DateTime;
 
 class FilmService

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Entities;
+namespace App\Entities;
 
 class Category
 {

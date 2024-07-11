@@ -6,9 +6,9 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\UserService;
-use api\Exceptions\EmailInUseException;
-use api\Exceptions\UsernameInUseException;
+use App\Business\UserService;
+use App\Exceptions\EmailInUseException;
+use App\Exceptions\UsernameInUseException;
 
 $userService = new UserService;
 

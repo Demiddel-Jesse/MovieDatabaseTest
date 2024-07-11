@@ -6,9 +6,9 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\FilmService;
-use api\Business\CategoryService;
-use api\Business\GenreService;
+use App\Business\FilmService;
+use App\Business\CategoryService;
+use App\Business\GenreService;
 
 $error = '';
 

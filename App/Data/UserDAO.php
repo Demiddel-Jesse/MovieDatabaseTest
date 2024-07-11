@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\User;
-use api\Data\DBConfig;
-use api\Exceptions\IsAdminUser;
+use App\Entities\User;
+use App\Data\DBConfig;
+use App\Exceptions\IsAdminUser;
 use PDO;
 
 class UserDAO

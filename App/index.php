@@ -6,7 +6,7 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\FilmService;
+use App\Business\FilmService;
 
 $filmService = new FilmService();
 $films = $filmService->getAllFilms();

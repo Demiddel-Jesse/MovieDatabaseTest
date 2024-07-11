@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\ActorsFilmsLine;
-use api\Entities\ActorsFilmsLines;
-use api\Data\DBConfig;
+use App\Entities\ActorsFilmsLine;
+use App\Entities\ActorsFilmsLines;
+use App\Data\DBConfig;
 use PDO;
 
 class ActorsFilmsLinesDAO

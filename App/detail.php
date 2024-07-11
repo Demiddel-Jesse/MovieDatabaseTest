@@ -6,10 +6,10 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\FilmService;
-use api\Business\ListTypeService;
-use api\Business\GenreService;
-use api\Business\UserListLineService;
+use App\Business\FilmService;
+use App\Business\ListTypeService;
+use App\Business\GenreService;
+use App\Business\UserListLineService;
 
 if (isset($_GET['film'])) {
   $filmService = new FilmService();

@@ -1,6 +1,6 @@
 <?php
 
-namespace api\Entities;
+namespace App\Entities;
 
 class UserListsLine
 {

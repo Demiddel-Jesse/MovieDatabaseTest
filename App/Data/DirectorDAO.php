@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\Director;
-use api\Data\DBConfig;
+use App\Entities\Director;
+use App\Data\DBConfig;
 use PDO;
 
 class DirectorDAO

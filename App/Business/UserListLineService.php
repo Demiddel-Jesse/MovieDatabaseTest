@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\UserListsLineDAO;
-use api\Entities\UserListsLine;
+use App\Data\UserListsLineDAO;
+use App\Entities\UserListsLine;
 
 class UserListLineService
 {

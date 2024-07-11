@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\Genre;
-use api\Data\DBConfig;
-use api\Exceptions\AlreadyExistException;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\InvalidTypeException;
+use App\Entities\Genre;
+use App\Data\DBConfig;
+use App\Exceptions\AlreadyExistException;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\InvalidTypeException;
 use PDO;
 
 class GenreDAO

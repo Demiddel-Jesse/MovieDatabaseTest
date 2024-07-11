@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\Film;
-use api\Data\DBConfig;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\InvalidTypeException;
+use App\Entities\Film;
+use App\Data\DBConfig;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\InvalidTypeException;
 use DateTime;
 use PDO;
 

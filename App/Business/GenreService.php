@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\GenreDAO;
-use api\Entities\Genre;
-use api\Exceptions\InvalidTypeException;
+use App\Data\GenreDAO;
+use App\Entities\Genre;
+use App\Exceptions\InvalidTypeException;
 
 class GenreService
 {

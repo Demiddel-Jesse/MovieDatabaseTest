@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\RatingDAO;
-use api\Entities\Rating;
-use api\Exceptions\InvalidTypeException;
+use App\Data\RatingDAO;
+use App\Entities\Rating;
+use App\Exceptions\InvalidTypeException;
 
 class RatingService
 {

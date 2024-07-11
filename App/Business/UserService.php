@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\UserDAO;
-use api\Entities\User;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\EmailInUseException;
-use api\Exceptions\InvalidTypeException;
-use api\Exceptions\PasswordIncorrectException;
-use api\Exceptions\UsernameInUseException;
+use App\Data\UserDAO;
+use App\Entities\User;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\EmailInUseException;
+use App\Exceptions\InvalidTypeException;
+use App\Exceptions\PasswordIncorrectException;
+use App\Exceptions\UsernameInUseException;
 
 class UserService
 {

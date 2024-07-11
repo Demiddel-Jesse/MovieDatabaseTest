@@ -6,10 +6,10 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\GenreService;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\InvalidTypeException;
-use api\Exceptions\AlreadyExistException;
+use App\Business\GenreService;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\InvalidTypeException;
+use App\Exceptions\AlreadyExistException;
 
 $genreService = new GenreService;
 $type = 'genre';

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\UserListsLine;
-use api\Data\DBConfig;
+use App\Entities\UserListsLine;
+use App\Data\DBConfig;
 use PDO;
 
 class UserListsLineDAO

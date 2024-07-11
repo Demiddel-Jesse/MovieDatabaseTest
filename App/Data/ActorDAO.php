@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\Actor;
-use api\Data\DBConfig;
+use App\Entities\Actor;
+use App\Data\DBConfig;
 use PDO;
 
 class ActorDAO

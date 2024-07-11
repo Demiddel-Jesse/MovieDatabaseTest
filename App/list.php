@@ -6,10 +6,10 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\UserService;
-use api\Business\UserListLineService;
-use api\Business\ListTypeService;
-use api\Business\FilmService;
+use App\Business\UserService;
+use App\Business\UserListLineService;
+use App\Business\ListTypeService;
+use App\Business\FilmService;
 
 $userService = new UserService();
 $userListLineService = new UserListLineService();

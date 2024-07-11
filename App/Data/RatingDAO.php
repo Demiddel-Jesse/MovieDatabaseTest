@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Data;
+namespace App\Data;
 
-use api\Entities\Rating;
-use api\Data\DBConfig;
-use api\Exceptions\InvalidTypeException;
+use App\Entities\Rating;
+use App\Data\DBConfig;
+use App\Exceptions\InvalidTypeException;
 use PDO;
 
 class RatingDAO

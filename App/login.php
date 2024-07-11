@@ -6,9 +6,9 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\UserService;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\PasswordIncorrectException;
+use App\Business\UserService;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\PasswordIncorrectException;
 
 $error = '';
 

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\ListTypeDAO;
-use api\Entities\ListType;
-use api\Exceptions\InvalidTypeException;
+use App\Data\ListTypeDAO;
+use App\Entities\ListType;
+use App\Exceptions\InvalidTypeException;
 
 class ListTypeService
 {

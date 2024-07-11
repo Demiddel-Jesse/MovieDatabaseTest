@@ -1,7 +1,7 @@
 <?php
 //data/DBConfig.php
 
-namespace api\Data;
+namespace App\Data;
 
 class DBConfig
 {

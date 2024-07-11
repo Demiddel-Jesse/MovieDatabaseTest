@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Business;
+namespace App\Business;
 
-use api\Data\CategoryDAO;
-use api\Entities\Category;
+use App\Data\CategoryDAO;
+use App\Entities\Category;
 
 class CategoryService
 {

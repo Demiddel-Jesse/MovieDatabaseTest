@@ -6,10 +6,10 @@ session_start();
 
 require_once 'bootstrap.php';
 
-use api\Business\CategoryService;
-use api\Exceptions\DoesntExistException;
-use api\Exceptions\InvalidTypeException;
-use api\Exceptions\AlreadyExistException;
+use App\Business\CategoryService;
+use App\Exceptions\DoesntExistException;
+use App\Exceptions\InvalidTypeException;
+use App\Exceptions\AlreadyExistException;
 
 $categoryService = new CategoryService;
 $type = 'category';
