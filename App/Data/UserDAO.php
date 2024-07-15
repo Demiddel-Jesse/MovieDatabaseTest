@@ -67,7 +67,7 @@ class UserDAO
 
   public function getByUserName(string $userName): ?User
   {
-    $sql = 'SELECT * FROM "Users" WHERE "userName"=:userName';
+    $sql = 'SELECT * FROM "Users" WHERE "username"=:userName';
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindValue(':userName', $userName);
     $stmt->execute();
