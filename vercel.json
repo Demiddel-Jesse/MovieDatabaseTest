@@ -61,5 +61,8 @@
 			"src": "/index(.*)",
 			"dest": "/api/index.php"
 		}
-	]
+	],
+	"env": {
+		"SESSION_DRIVER": "cookie"
+	}
 }
