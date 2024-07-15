@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_SESSION['admin'])) {
+if (isset($_COOKIE['admin'])) {
 ?>
 	<a href="editFilm.php?film=<?php echo $film->getId() ?>">Edit film</a>
 <?php
@@ -33,7 +33,7 @@ if (isset($_SESSION['admin'])) {
 		?>
 	</section>
 	<?php
-	if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
+	if (isset($_COOKIE['admin']) || isset($_COOKIE['user'])) {
 		$userListLine = $userListLineService->getUserListLine($user->getId(), $_GET['film']);
 	?>
 		<button class="js-buttonAddToUserLists" data-filmId="<?php echo $film->getId(); ?>" <?php echo $userListLine == null ? '' : 'hidden' ?>>Add to your lists</button>

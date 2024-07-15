@@ -17,23 +17,20 @@
     <ul class="c-nav__standard">
       <li><a href="index.php">Home</a></li>
       <?php
-      if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
+      if (!isset($_COOKIE['admin']) && !isset($_COOKIE['user'])) {
       ?>
         <li><a href="register.php">Register</a></li>
         <li><a href="login.php">Login</a></li>
       <?php
       }
-      print_r($_COOKIE['user']);
-      print_r('  ');
-      print_r($_COOKIE['admin']);
       ?>
 
       <?php
-      if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
-        if (isset($_SESSION['admin'])) {
-          $user = unserialize($_SESSION['admin']);
-        } else if (isset($_SESSION['user'])) {
-          $user = unserialize($_SESSION['user']);
+      if (isset($_COOKIE['admin']) || isset($_COOKIE['user'])) {
+        if (isset($_COOKIE['admin'])) {
+          $user = unserialize($_COOKIE['admin']);
+        } else if (isset($_COOKIE['user'])) {
+          $user = unserialize($_COOKIE['user']);
         }
       ?>
         <li><a href="dashboard.php">Dashboard</a></li>
@@ -44,7 +41,7 @@
     </ul>
     <ul class="c-nav__admin">
       <?php
-      if (isset($_SESSION['admin'])) {
+      if (isset($_COOKIE['admin'])) {
       ?>
         <li><a href="addFilm.php">Add film to database</a></li>
         <!-- <li><a href="actorAdd.php">Add actor</a></li>

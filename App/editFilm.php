@@ -10,7 +10,7 @@ use App\Business\FilmService;
 use App\Business\CategoryService;
 use App\Business\GenreService;
 
-if (!isset($_SESSION['admin'])) {
+if (!isset($_COOKIE['admin'])) {
   header('location: index.php');
   exit(0);
 }

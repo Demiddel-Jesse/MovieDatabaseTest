@@ -16,15 +16,15 @@ $userListLineService = new UserListLineService();
 $listTypeService = new ListTypeService();
 $filmService = new FilmService();
 
-if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
+if (!isset($_COOKIE['admin']) && !isset($_COOKIE['user'])) {
   header('location: index.php');
   exit(0);
 }
 
-if (isset($_SESSION['admin'])) {
-  $user = unserialize($_SESSION['admin']);
-} else if (isset($_SESSION['user'])) {
-  $user = unserialize($_SESSION['user']);
+if (isset($_COOKIE['admin'])) {
+  $user = unserialize($_COOKIE['admin']);
+} else if (isset($_COOKIE['user'])) {
+  $user = unserialize($_COOKIE['user']);
 }
 
 // print_r($user);

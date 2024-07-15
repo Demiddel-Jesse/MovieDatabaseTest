@@ -12,7 +12,7 @@ use App\Exceptions\UsernameInUseException;
 
 $userService = new UserService;
 
-if (isset($_SESSION['admin']) || isset($_SESSION['user'])) {
+if (isset($_COOKIE['admin']) || isset($_COOKIE['user'])) {
   header('location: index.php');
   exit(0);
 }

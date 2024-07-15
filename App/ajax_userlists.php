@@ -9,10 +9,10 @@ require_once 'bootstrap.php';
 use App\Business\UserListLineService;
 
 $userListLineService = new UserListLineService();
-if (isset($_SESSION['user'])) {
-  $user = unserialize($_SESSION['user']);
-} else if (isset($_SESSION['admin'])) {
-  $user = unserialize($_SESSION['admin']);
+if (isset($_COOKIE['user'])) {
+  $user = unserialize($_COOKIE['user']);
+} else if (isset($_COOKIE['admin'])) {
+  $user = unserialize($_COOKIE['admin']);
 } else {
   header('location: index.php');
   exit(0);

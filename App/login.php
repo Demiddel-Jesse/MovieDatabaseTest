@@ -32,11 +32,11 @@ if (isset($_GET['action']) && $_GET['action'] = 'login') {
       $user = $userService->login($username, $password);
       if ($user->getAdmin() == 1) {
         setcookie("admin", serialize($user), time() + 1 * 30 * 24 * 3600, "/");
-        $_SESSION['admin'] = serialize($user);
+        $_COOKIE['admin'] = serialize($user);
       } else {
         setcookie("user", serialize($user), time() + 1 * 30 * 24 * 3600, "/");
 
-        $_SESSION['user'] = serialize($user);
+        $_COOKIE['user'] = serialize($user);
       }
       header('location: index.php');
       exit(0);
