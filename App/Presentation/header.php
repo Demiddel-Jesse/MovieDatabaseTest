@@ -23,9 +23,9 @@
         <li><a href="login.php">Login</a></li>
       <?php
       }
-      print_r($_SESSION['user']);
+      print_r($_COOKIE['user']);
       print_r('  ');
-      print_r($_SESSION['admin']);
+      print_r($_COOKIE['admin']);
       ?>
 
       <?php
