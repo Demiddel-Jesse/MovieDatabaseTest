@@ -10,6 +10,10 @@
 			"dest": "/api/index.php"
 		},
 		{
+			"src": "/session",
+			"dest": "/api/session.php"
+		},
+		{
 			"src": "/detail(.*)",
 			"dest": "/api/detail.php"
 		},
